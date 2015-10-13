@@ -4,7 +4,7 @@ Editor Daniel Lundström
 #Secure forum component for the web
 
 ##Supplementary specification
-Secure Considerations
+Secure Considerations:
 
 - Javascript injections
 
