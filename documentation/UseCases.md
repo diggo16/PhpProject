@@ -5,6 +5,7 @@ Editor Daniel Lundström
 
 ##Supplementary specification
 Secure Considerations
+
 -Javascript injections
 
 #Use case 1: Click on forum article
