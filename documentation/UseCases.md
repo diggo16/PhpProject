@@ -1,5 +1,5 @@
 #Requirement specification 2015
-Editor Daniel Lundström
+Editor: Daniel Lundström
 
 #Secure forum component for the web
 
