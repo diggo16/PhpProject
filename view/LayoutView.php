@@ -14,8 +14,9 @@ class LayoutView
      * Echo the views
      * @param ItemListView $itemListView
      */
-    public function render(ItemListView $itemListView)
+    public function render(ItemListView $itemListView, ItemView $itemView)
     {
+        $output = $this->getCorrectOutput($itemListView, $itemView);
         echo '<!DOCTYPE html>
         <html>
           <head>
@@ -25,10 +26,19 @@ class LayoutView
           <body>
             <h1>Project</h1>
             <div class="container">
-            ' . $itemListView->getTableOutput() . '    
+            ' . $output . '    
             </div>
            </body>
         </html>
       ';
+    }
+    private function getCorrectOutput(ItemListView $itemListView, ItemView $itemView)
+    {
+        $itemString = $itemView->getItemHTMLString();
+        if($itemString != null)
+        {
+            return $itemString;
+        }
+        return $itemListView->getTableOutput();
     }
 }

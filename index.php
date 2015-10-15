@@ -12,6 +12,7 @@ require_once 'model/Item.php';
 require_once 'controller/StartController.php';
 require_once 'view/layoutView.php';
 require_once 'view/ItemListView.php';
+require_once 'view/ItemView.php';
 
 /*
  * Create objects
@@ -21,9 +22,10 @@ $items = new Items();
 $controller = new StartController($items);
 
 $itemListView = new ItemListView($items);
+$itemView = new ItemView($items);
 $layoutView = new LayoutView();
 
 /*
  * Show website
  */
-$layoutView->render($itemListView);
+$layoutView->render($itemListView, $itemView);

@@ -37,4 +37,11 @@ class Items
     {
         return $this->items;
     }
+    public function getClickedItem()
+    {
+        foreach ($this->items as $item) 
+        {
+            
+        }
+    }
 }

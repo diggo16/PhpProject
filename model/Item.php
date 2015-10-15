@@ -17,6 +17,11 @@ class Item
      */
     private $text;
     /**
+     *
+     * @var boolean $isClicked 
+     */
+    private $isClicked;
+    /**
      * Set the title and text
      * @param string $title
      * @param string $text
@@ -25,6 +30,7 @@ class Item
     {
         $this->title = $title;
         $this->text = $text;
+        $this->isClicked = false;
     }
     /**
      * Return the title
@@ -41,5 +47,21 @@ class Item
     public function getText()
     {
         return $this->text;
+    }
+    /**
+     * Set if the item is clicked to true or false
+     * @param boolean $isClicked
+     */
+    public function setIsClicked(boolean $isClicked)
+    {
+        $this->isClicked = $isClicked;
+    }
+    /**
+     * Return true if the item is clicked else false
+     * @return boolean isClicked
+     */
+    public function getIsClicked()
+    {
+        return $this->isClicked;
     }
 }
