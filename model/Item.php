@@ -22,14 +22,20 @@ class Item
      */
     private $isClicked;
     /**
+     * Author to the text
+     * @var string $author
+     */
+    private $author;
+    /**
      * Set the title and text
      * @param string $title
      * @param string $text
      */
-    public function __construct($title, $text) 
+    public function __construct($title, $author, $text) 
     {
         $this->title = $title;
         $this->text = $text;
+        $this->author = $author;
         $this->isClicked = false;
     }
     /**
@@ -47,6 +53,10 @@ class Item
     public function getText()
     {
         return $this->text;
+    }
+    public function getAuthor()
+    {
+        return $this->author;
     }
     /**
      * Set if the item is clicked to true or false

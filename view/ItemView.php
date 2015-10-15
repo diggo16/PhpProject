@@ -24,8 +24,9 @@ class ItemView
         $item = $this->getClickedItem();
         if($item != null)
         {
-            return '<b>' . $item->getTitle() . '</b>
-                    ' . $item->getText();
+            return '<b>' . $item->getTitle() . '</b> <br />
+                    ' . $item->getText() . '<br />
+                    By: ' . $item->getAuthor();
         }
         return null;
     }

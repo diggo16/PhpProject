@@ -23,8 +23,8 @@ class Items
            /*
            * temporary data
            */
-           $item1 = new Item("sports", "fotball, basket, tennis");
-           $item2 = new Item("games", "lol, cs, dota, fifa");
+           $item1 = new Item("sports", "Dan", "fotball, basket, tennis");
+           $item2 = new Item("games", "Jan", "lol, cs, dota, fifa");
            $itemArr = array($item1, $item2);
            $this->items = $itemArr;
         }
