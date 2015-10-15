@@ -11,4 +11,8 @@ class Items
     {
         $this->items = $items;
     }
+    public function getItems()
+    {
+        return $this->items;
+    }
 }

@@ -13,8 +13,9 @@
  */
 class StartController 
 {
-    public function __construct() 
+    private $items;
+    public function __construct(Items $items) 
     {
-        echo "controller";
+        $this->items = $items;
     }
 }
