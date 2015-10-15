@@ -6,10 +6,10 @@
  */
 class LayoutView 
 {
-    private $items;
-    public function __construct(Items $items) 
+    private $itemListView;
+    public function __construct(ItemListView $itemListView) 
     {
-        $this->items = $items;
+        $this->itemListView = $itemListView;
     }
     public function render()
     {
@@ -24,26 +24,10 @@ class LayoutView
             
 
             <div class="container">
-            ' . $this->getTable() . '    
+            ' . $this->itemListView->getTableOutput() . '    
             </div>
            </body>
         </html>
       ';
-    }
-    private function getTable()
-    {
-        $table = '<table style="width:100%">';
-        if($this->items->getItems() != 0)
-        {
-            foreach ($this->items->getItems() as $item) 
-            {
-                $title = $item->getTitle();
-                $table .= '<tr>
-                            <td> <a href="?item=' . $title . '">' . $title . '</a></td>
-                           </tr>';
-            }
-            $table .= '</table>';
-        }       
-        return $table;
     }
 }
