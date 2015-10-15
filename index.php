@@ -9,7 +9,7 @@ ini_set('display_errors', 'ON');
  */
 require_once 'model/Items.php';
 require_once 'model/Item.php';
-require_once 'controller/StartController.php';
+require_once 'controller/ItemsController.php';
 require_once 'view/layoutView.php';
 require_once 'view/ItemListView.php';
 require_once 'view/ItemView.php';
@@ -19,7 +19,7 @@ require_once 'view/ItemView.php';
  */
 $items = new Items();
 
-$controller = new StartController($items);
+$controller = new ItemsController($items);
 
 $itemListView = new ItemListView($items);
 $itemView = new ItemView($items);
