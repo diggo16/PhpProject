@@ -52,7 +52,7 @@ class Item
      * Set if the item is clicked to true or false
      * @param boolean $isClicked
      */
-    public function setIsClicked(boolean $isClicked)
+    public function setIsClicked($isClicked)
     {
         $this->isClicked = $isClicked;
     }

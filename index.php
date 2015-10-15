@@ -13,18 +13,23 @@ require_once 'controller/ItemsController.php';
 require_once 'view/layoutView.php';
 require_once 'view/ItemListView.php';
 require_once 'view/ItemView.php';
+require_once 'view/GetObjects.php';
 
 /*
  * Create objects
  */
 $items = new Items();
 
-$controller = new ItemsController($items);
-
 $itemListView = new ItemListView($items);
 $itemView = new ItemView($items);
 $layoutView = new LayoutView();
 
+$controller = new ItemsController($items, $itemListView->getItemName());
+
+/*
+ * Update items
+ */
+$controller->updateItems();
 /*
  * Show website
  */

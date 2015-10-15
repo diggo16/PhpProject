@@ -11,6 +11,7 @@ class ItemListView
      * @var Items $items
      */
     private $items;
+    private static $itemName = "item";
     /**
      * Set $items
      * @param Items $items
@@ -33,11 +34,15 @@ class ItemListView
             {
                 $title = $item->getTitle();
                 $table .= '<tr>
-                            <td> <a href="?item=' . $title . '">' . $title . '</a></td>
+                            <td> <a href="?' . self::$itemName . '=' . $title . '">' . $title . '</a></td>
                            </tr>';
             }
             $table .= '</table>';
         }       
         return $table; 
+    }
+    public function getItemName()
+    {
+        return self::$itemName;
     }
 }

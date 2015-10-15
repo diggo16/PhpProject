@@ -41,7 +41,25 @@ class Items
     {
         foreach ($this->items as $item) 
         {
-            
+            return $item;
         }
+    }
+    public function setClickedItem($title)
+    {
+        foreach ($this->items as $item) 
+        {
+            if($item->getTitle() == $title)
+            {
+                $item->setIsClicked(TRUE);
+            }  
+        }
+        
+    }
+    public function resetItemClicks()
+    {
+       foreach ($this->items as $item) 
+        {
+            $item->setIsClicked(FALSE);
+        } 
     }
 }
