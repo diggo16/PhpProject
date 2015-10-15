@@ -33,14 +33,17 @@ class LayoutView
     private function getTable()
     {
         $table = '<table style="width:100%">';
-        foreach ($this->items->getItems() as $item) 
+        if($this->items->getItems() != 0)
         {
-            $title = $item->getTitle();
-            $table .= '<tr>
-                        <td> <a href="?item=' . $title . '">' . $title . '</a></td>
-                       </tr>';
-        }
-        $table .= '</table>';
+            foreach ($this->items->getItems() as $item) 
+            {
+                $title = $item->getTitle();
+                $table .= '<tr>
+                            <td> <a href="?item=' . $title . '">' . $title . '</a></td>
+                           </tr>';
+            }
+            $table .= '</table>';
+        }       
         return $table;
     }
 }
