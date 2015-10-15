@@ -34,8 +34,8 @@ class LayoutView
     }
     /**
      * 
-     * @param string $itemListViewEcho
-     * @param string $itemViewEcho
+     * @param string $itemListViewString
+     * @param string $itemViewString
      * @return string htmlString
      */
     private function getCorrectOutput($itemListViewString, $itemViewString)
