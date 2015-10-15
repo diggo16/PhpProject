@@ -34,16 +34,16 @@ class LayoutView
     }
     /**
      * 
-     * @param ItemListView $itemListView
-     * @param ItemView $itemView
-     * @return type
+     * @param string $itemListViewEcho
+     * @param string $itemViewEcho
+     * @return string htmlString
      */
-    private function getCorrectOutput($itemListViewEcho, $itemViewEcho)
+    private function getCorrectOutput($itemListViewString, $itemViewString)
     {
-        if($itemViewEcho != null)
+        if($itemViewString != null)
         {
-            return $itemViewEcho;
+            return $itemViewString;
         }
-        return $itemListViewEcho;
+        return $itemListViewString;
     }
 }
