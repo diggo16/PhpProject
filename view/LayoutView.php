@@ -16,7 +16,7 @@ class LayoutView
      */
     public function render(ItemListView $itemListView, ItemView $itemView)
     {
-        $output = $this->getCorrectOutput($itemListView, $itemView);
+        $output = $this->getCorrectOutput($itemListView->getTableOutput(), $itemView->getItemHTMLString());
         echo '<!DOCTYPE html>
         <html>
           <head>
@@ -32,13 +32,18 @@ class LayoutView
         </html>
       ';
     }
-    private function getCorrectOutput(ItemListView $itemListView, ItemView $itemView)
+    /**
+     * 
+     * @param ItemListView $itemListView
+     * @param ItemView $itemView
+     * @return type
+     */
+    private function getCorrectOutput($itemListViewEcho, $itemViewEcho)
     {
-        $itemString = $itemView->getItemHTMLString();
-        if($itemString != null)
+        if($itemViewEcho != null)
         {
-            return $itemString;
+            return $itemViewEcho;
         }
-        return $itemListView->getTableOutput();
+        return $itemListViewEcho;
     }
 }
