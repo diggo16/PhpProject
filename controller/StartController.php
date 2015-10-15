@@ -13,7 +13,15 @@
  */
 class StartController 
 {
+    /**
+     * A model/Items object
+     * @var Items $items 
+     */
     private $items;
+    /**
+     * Get the items
+     * @param Items $items
+     */
     public function __construct(Items $items) 
     {
         $this->items = $items;

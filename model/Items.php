@@ -6,7 +6,15 @@
  */
 class Items 
 {
+    /**
+     * Array of the object model/Item
+     * @var array $items
+     */
     private $items;
+    /**
+     * Set $items
+     * @param Item[] $items
+     */
     public function __construct($items = array()) 
     {
         $this->items = $items;
@@ -21,6 +29,10 @@ class Items
            $this->items = $itemArr;
         }
     }
+    /**
+     * 
+     * @return Item[] items
+     */
     public function getItems()
     {
         return $this->items;

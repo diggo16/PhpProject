@@ -21,7 +21,9 @@ $items = new Items();
 $controller = new StartController($items);
 
 $itemListView = new ItemListView($items);
-$layoutView = new LayoutView($itemListView);
+$layoutView = new LayoutView();
 
-
-$layoutView->render();
+/*
+ * Show website
+ */
+$layoutView->render($itemListView);

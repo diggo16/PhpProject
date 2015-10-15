@@ -6,14 +6,17 @@
  */
 class LayoutView 
 {
-    private $itemListView;
-    public function __construct(ItemListView $itemListView) 
+    public function __construct() 
     {
-        $this->itemListView = $itemListView;
+        
     }
-    public function render()
+    /**
+     * Echo the views
+     * @param ItemListView $itemListView
+     */
+    public function render(ItemListView $itemListView)
     {
-          echo '<!DOCTYPE html>
+        echo '<!DOCTYPE html>
         <html>
           <head>
             <meta charset="utf-8">
@@ -21,10 +24,8 @@ class LayoutView
           </head>
           <body>
             <h1>Project</h1>
-            
-
             <div class="container">
-            ' . $this->itemListView->getTableOutput() . '    
+            ' . $itemListView->getTableOutput() . '    
             </div>
            </body>
         </html>
