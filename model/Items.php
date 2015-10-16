@@ -17,7 +17,7 @@ class Items
      */
     public function __construct($items = array()) 
     {
-        self::$items = $items;
+        $this->setItems($items);
     }
     /**
      * 
@@ -27,6 +27,18 @@ class Items
     {
         return self::$items;
     }
+    /**
+     * Set the items to the array $items
+     * @param array $items
+     */
+    public function setItems($items)
+    {
+       self::$items = $items; 
+    }
+    /**
+     * Return an item if one is clicked
+     * @return Item $item
+     */
     public function getClickedItem()
     {
         foreach (self::$items as $item) 
@@ -34,6 +46,10 @@ class Items
             return $item;
         }
     }
+    /**
+     * Set the item with the title $title to clicked
+     * @param string $title
+     */
     public function setClickedItem($title)
     {
         foreach (self::$items as $item) 
@@ -45,6 +61,9 @@ class Items
         }
         
     }
+    /**
+     * Set all items to not clicked
+     */
     public function resetItemClicks()
     {
        foreach (self::$items as $item) 

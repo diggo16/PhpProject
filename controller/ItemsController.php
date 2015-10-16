@@ -44,7 +44,7 @@ class ItemsController
     }
     public function updateItems()
     {
-        $this->items = $this->database->loadItems($this->items);
+        $this->database->loadItems($this->items);
         $this->items->resetItemClicks();
         $this->isItemClicked();
     }

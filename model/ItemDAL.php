@@ -24,7 +24,7 @@ class ItemDAL
         {
             $itemsArr[] = new Item($xmlItem->title, $xmlItem->author, $xmlItem->text);
         }
-        return new Items($itemsArr);
+        $items = new Items($itemsArr);
         //$xml = new SimpleXMLElement($this->itemPath);
         //var_dump($xml);
         //echo $xml->items->item[self::$xmlTitle];
