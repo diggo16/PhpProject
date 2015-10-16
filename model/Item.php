@@ -80,10 +80,19 @@ class Item
     {
         return $this->isClicked;
     }
+    /**
+     * Return the unique id of the item
+     * @return string $uniqueID
+     */
     public function getUniqueID()
     {
         return $this->uniqueID;
     }
+    /**
+     * Return true if the strings are the same else false
+     * @param string $anotherID
+     * @return boolean isSame
+     */
     public function compareUniqueID($anotherID)
     {
         if(strcmp($this->uniqueID, $anotherID) == 0)
