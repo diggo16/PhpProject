@@ -6,9 +6,13 @@
  */
 class LayoutView 
 {
+    private $session;
+    
+    private static $sessionMessage = "layoutView::message";
+
     public function __construct() 
     {
-        
+        $this->session = new Session();
     }
     /**
      * Echo the views
@@ -25,9 +29,10 @@ class LayoutView
           </head>
           <body>
             <h1>Project</h1>
-            <div class="container">
-            ' . $output . '    
-            </div>
+            ' . $this->getErrorMessageOutput()
+            .'<div class="container">
+            ' . $output 
+            .'</div>
            </body>
         </html>
       ';
@@ -45,5 +50,11 @@ class LayoutView
             return $itemViewString;
         }
         return $itemListViewString;
+    }
+    private function getErrorMessageOutput()
+    {
+       $message = $this->session->getSession(self::$sessionMessage);
+       $errorMessage = '<p><font color="red">' . $message . '</font></p>';
+       return $errorMessage;
     }
 }

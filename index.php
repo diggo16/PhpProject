@@ -1,4 +1,6 @@
 <?php
+// Start session
+session_start();
 /*
  * Show errors
  */
@@ -16,6 +18,7 @@ require_once 'view/ItemView.php';
 require_once 'view/GetObjects.php';
 require_once 'view/Server.php';
 require_once 'model/ItemDAL.php';
+require_once 'view/session.php';
 
 /*
  * Create objects
