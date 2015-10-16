@@ -14,6 +14,8 @@ require_once 'view/layoutView.php';
 require_once 'view/ItemListView.php';
 require_once 'view/ItemView.php';
 require_once 'view/GetObjects.php';
+require_once 'view/Server.php';
+require_once 'model/ItemDAL.php';
 
 /*
  * Create objects
@@ -30,6 +32,8 @@ $controller = new ItemsController($items, $itemListView->getItemName());
  * Update items
  */
 $controller->updateItems();
+
+
 /*
  * Show website
  */

@@ -18,7 +18,7 @@ class ItemListView
      */
     public function __construct(Items $items) 
     {
-        $this->items = $items;
+        $this->setItems($items);
     }
     /**
      * Return a table with the items
@@ -44,5 +44,9 @@ class ItemListView
     public function getItemName()
     {
         return self::$itemName;
+    }
+    public function setItems(Items $items)
+    {
+        $this->items = $items;
     }
 }
