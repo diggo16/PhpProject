@@ -9,7 +9,6 @@ class ItemDAL
     private $dirPath;
     private $itemPath;
     
-    private static $xmlTitle = "title"; 
     public function __construct($root) 
     {
         $this->dirPath = $root . "/data/items";
