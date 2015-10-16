@@ -47,19 +47,18 @@ class Items
         }
     }
     /**
-     * Set the item with the title $title to clicked
-     * @param string $title
+     * Set the item with the unique id $uniqueID to clicked
+     * @param string $uniqueID
      */
-    public function setClickedItem($title)
+    public function setClickedItem($uniqueID)
     {
         foreach (self::$items as $item) 
         {
-            if($item->getTitle() == $title)
+            if($item->compareUniqueID($uniqueID))
             {
                 $item->setIsClicked(TRUE);
             }  
-        }
-        
+        }   
     }
     /**
      * Set all items to not clicked

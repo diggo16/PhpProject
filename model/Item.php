@@ -80,6 +80,10 @@ class Item
     {
         return $this->isClicked;
     }
+    public function getUniqueID()
+    {
+        return $this->uniqueID;
+    }
     public function compareUniqueID($anotherID)
     {
         if(strcmp($this->uniqueID, $anotherID) == 0)

@@ -11,7 +11,7 @@ class ItemListView
      * @var Items $items
      */
     private $items;
-    private static $itemName = "item";
+    private static $itemName = "itemID";
     /**
      * Set $items
      * @param Items $items
@@ -32,9 +32,10 @@ class ItemListView
         {
             foreach ($this->items->getItems() as $item) 
             {
+                $uniqueID = $item->getUniqueID();
                 $title = $item->getTitle();
                 $table .= '<tr>
-                            <td> <a href="?' . self::$itemName . '=' . $title . '">' . $title . '</a></td>
+                            <td> <a href="?' . self::$itemName . '=' . $uniqueID . '">' . $title . '</a></td>
                            </tr>';
             }
             $table .= '</table>';
