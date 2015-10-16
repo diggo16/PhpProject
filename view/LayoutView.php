@@ -16,9 +16,9 @@ class LayoutView
      * Echo the views
      * @param ItemListView $itemListView
      */
-    public function render(ItemListView $itemListView, ItemView $itemView)
+    public function render(ItemListView $itemListView, ItemView $itemView, CreateItemView $createItemView)
     {
-        $output = $this->getCorrectOutput($itemListView->getTableOutput(), $itemView->getItemHTMLString());
+        $output = $this->getCorrectOutput($itemListView->getTableOutput(), $itemView->getItemHTMLString(), $createItemView);
         echo '<!DOCTYPE html>
         <html>
           <head>
@@ -29,7 +29,8 @@ class LayoutView
             <h1>Project</h1>
             ' . $this->getErrorMessageOutput()
             .'<div class="container">
-            ' . $output 
+            ' . $output
+              . $this->getButtonOutput($createItemView)
             .'</div>
            </body>
         </html>
@@ -41,18 +42,35 @@ class LayoutView
      * @param string $itemViewString
      * @return string htmlString
      */
-    private function getCorrectOutput($itemListViewString, $itemViewString)
+    private function getCorrectOutput($itemListViewString, $itemViewString, CreateItemView $createItemView)
     {
-        if($itemViewString != null)
+        if($createItemView->isButtonClicked())
         {
-            return $itemViewString;
+            return $createItemView->getCreateItemForm();
         }
-        return $itemListViewString;
+        else
+        {
+             if($itemViewString != null)
+            {
+                return $itemViewString;
+            }
+            return $itemListViewString;
+        }
+       
     }
     private function getErrorMessageOutput()
     {
        $message = $this->session->getSession($this->session->getSessionMessage());
        $errorMessage = '<p><font color="red">' . $message . '</font></p>';
        return $errorMessage;
+    }
+    private function getButtonOutput(CreateItemView $createItemView)
+    {
+        $button = "";
+        if(!$createItemView->isButtonClicked())
+        {
+            $button = $createItemView->getCreateItemButton();
+        }
+        return $button;
     }
 }

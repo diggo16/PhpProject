@@ -12,8 +12,12 @@ class GetObjects
     }
     public function getObject($name)
     {
-       $object = $_GET[$name];
-       return $object;
+        if(isset($_GET[$name]))
+        {
+             $object = $_GET[$name];
+            return $object;
+        }
+      return null;
     }
     public function setObject($name, $value)
     {
