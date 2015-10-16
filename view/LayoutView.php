@@ -7,8 +7,6 @@
 class LayoutView 
 {
     private $session;
-    
-    private static $sessionMessage = "layoutView::message";
 
     public function __construct() 
     {
@@ -53,7 +51,7 @@ class LayoutView
     }
     private function getErrorMessageOutput()
     {
-       $message = $this->session->getSession(self::$sessionMessage);
+       $message = $this->session->getSession($this->session->getSessionMessage());
        $errorMessage = '<p><font color="red">' . $message . '</font></p>';
        return $errorMessage;
     }

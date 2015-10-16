@@ -16,18 +16,21 @@ class ItemDAL
     }
     public function loadItems(Items $items)
     {
-        $xmlString = file_get_contents($this->itemPath);
-
-        $xmlItems = new SimpleXMLElement($xmlString);
-        $itemsArr = array();
-        foreach($xmlItems as $xmlItem)
+        try
         {
-            $itemsArr[] = new Item($xmlItem->title, $xmlItem->author, $xmlItem->text);
+            $xmlString = file_get_contents($this->itemPath);
+
+            $xmlItems = new SimpleXMLElement($xmlString);
+            $itemsArr = array();
+            foreach($xmlItems as $xmlItem)
+            {
+                $itemsArr[] = new Item($xmlItem->title, $xmlItem->author, $xmlItem->text);
+            }
+            $items = new Items($itemsArr);
+        } 
+        catch (Exception $ex) 
+        {
+            throw new Exception();
         }
-        $items = new Items($itemsArr);
-        //$xml = new SimpleXMLElement($this->itemPath);
-        //var_dump($xml);
-        //echo $xml->items->item[self::$xmlTitle];
-        //echo $xml->bbb->cccc->eeee['name'];
     }
 }

@@ -1,11 +1,4 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of StartController
  *
@@ -28,7 +21,21 @@ class ItemsController
      * @var string $itemName
      */
     private $itemName;
+    /**
+     * Class that handles the session
+     * @var Session $session
+     */
+    private $session;
+    /**
+     * Class that handles the item data
+     * @var ItemDAL $database
+     */
     private $database;
+    /**
+     *
+     * @var ErrorMessages $errorMessages
+     */
+    private $errorMessages;
     /**
      * Get the items
      * @param Items $items
@@ -41,12 +48,23 @@ class ItemsController
         
         $server = new Server();
         $this->database = new ItemDAL($server->getDocumentRootPath());
+        
+        $this->session = new Session();
+        $this->errorMessages = new ErrorMessages();
     }
     public function updateItems()
     {
-        $this->database->loadItems($this->items);
-        $this->items->resetItemClicks();
-        $this->isItemClicked();
+        try
+        {
+            $this->database->loadItems($this->items);
+            $this->items->resetItemClicks();
+            $this->isItemClicked(); 
+        } 
+        catch (Exception $ex) 
+        {
+            $this->session->setSession($this->session->getSessionMessage(), $this->errorMessages->getErrorInLoadingItems());
+        }
+        
     }
     private function isItemClicked()
     {
@@ -54,5 +72,10 @@ class ItemsController
         {
             $this->items->setClickedItem($this->get->getObject($this->itemName));
         }
+    }
+    public function close()
+    {
+        $this->session->removeSession($this->session->getSessionMessage());
+        $this->session->destroySession();
     }
 }

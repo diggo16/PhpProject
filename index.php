@@ -18,7 +18,8 @@ require_once 'view/ItemView.php';
 require_once 'view/GetObjects.php';
 require_once 'view/Server.php';
 require_once 'model/ItemDAL.php';
-require_once 'view/session.php';
+require_once 'view/Session.php';
+require_once 'view/ErrorMessages.php';
 
 /*
  * Create objects
@@ -41,3 +42,7 @@ $controller->updateItems();
  * Show website
  */
 $layoutView->render($itemListView, $itemView);
+/*
+ * Close everything
+ */
+$controller->close();

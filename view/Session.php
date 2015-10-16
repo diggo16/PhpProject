@@ -57,5 +57,9 @@ class Session
         $newStr = htmlentities($_SESSION[$string]);  
         return $newStr;
     }
+    public function getSessionMessage()
+    {
+        return "session:message";
+    }
         
 }
