@@ -27,16 +27,22 @@ class Item
      */
     private $author;
     /**
+     * An unique id to identify the item
+     * @var string $uniqueID
+     */
+    private $uniqueID;
+    /**
      * Set the title and text
      * @param string $title
      * @param string $text
      */
-    public function __construct($title, $author, $text) 
+    public function __construct($title, $author, $text, $uniqueID) 
     {
         $this->title = $title;
         $this->text = $text;
         $this->author = $author;
         $this->isClicked = false;
+        $this->uniqueID = $uniqueID;
     }
     /**
      * Return the title
@@ -73,5 +79,13 @@ class Item
     public function getIsClicked()
     {
         return $this->isClicked;
+    }
+    public function compareUniqueID($anotherID)
+    {
+        if(strcmp($this->uniqueID, $anotherID) == 0)
+        {
+            return true;
+        }
+        return false;
     }
 }
