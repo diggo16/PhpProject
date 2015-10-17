@@ -10,7 +10,7 @@ Show all the items in a table
 - All the Items are shown
 - A create new item button is shown
 
-##Test case 1.2 Show an item
+##Test case 1.2 Successfully show an item
 Show an item when you click on it
 
 ###Input:
@@ -32,7 +32,7 @@ Show error message if the item that is clicked no longer exists
 - Error message
 - All the Items are shown
 
-##Test case 1.4 Click on "create new item" button
+##Test case 1.4 Show create new item form
 Navigate to create new item window when the button is clicked
 
 ###Input:
@@ -42,3 +42,13 @@ Navigate to create new item window when the button is clicked
 - Title is shown
 - Item form is shown
 - Create button is shown
+
+##Test case 1.5 Failed create new item with too short title
+
+###Input:
+- Add button is pushed
+- Title is shorter than the limit
+
+###Output:
+- Test case 1.4
+- Error message
