@@ -55,6 +55,11 @@ class ErrorMessages
                 $message = $this->getTextTooShort();
                 break;
             }
+            case 6:
+            {
+                $message = $this->getTextTooLong();
+                break;
+            }
             default:
             {
                 break;
@@ -81,6 +86,10 @@ class ErrorMessages
     private function getTextTooShort()
     {
         return $this->tooShort(self::$text, "8");
+    }
+    private function getTextTooLong()
+    {
+        return $this->tooLong(self::$text, "360");
     }
     private function tooShort($name, $value)
     {

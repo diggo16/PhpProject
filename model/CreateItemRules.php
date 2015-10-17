@@ -13,6 +13,7 @@ class CreateItemRules
     private static $authorMaxLength = 26;
     
     private static $textMinLength = 8;
+    private static $textMaxLength = 360;
     public function __construct() 
     {
        
@@ -42,6 +43,10 @@ class CreateItemRules
         {
             return 5;
         }
+        else if($this->checkTextTooLong($text))
+        {
+            return 6;
+        }
         return 0;
     }
     /**
@@ -69,6 +74,16 @@ class CreateItemRules
     {
         return $this->checkTooShort($text, self::$textMinLength);     
     }
+    private function checkTextTooLong($text)
+    {
+       return $this->checkTooLong($text, self::$textMaxLength);     
+    }
+    /**
+     * Check if the string length is longer than the in
+     * @param string $string
+     * @param int $length
+     * @return boolean tooLong
+     */
     private function checkTooLong($string, $length)
     {
         if(strlen($string) >= $length)
@@ -77,7 +92,13 @@ class CreateItemRules
         }
         return false; 
     }
-     private function checkTooShort($string, $length)
+    /**
+     * Check if the string length is shorter than the int
+     * @param string $string
+     * @param int $length
+     * @return boolean tooShort
+     */
+    private function checkTooShort($string, $length)
     {
         if(strlen($string) <= $length)
         {
