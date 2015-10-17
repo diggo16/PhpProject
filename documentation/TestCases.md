@@ -52,3 +52,13 @@ Navigate to create new item window when the button is clicked
 ###Output:
 - Test case 1.4
 - Error message
+
+##Test case 1.6 Failed create new item with too long title
+
+###Input:
+- Add button is pushed
+- Title is longer than the limit
+
+###Output:
+- Test case 1.4
+- Error message
