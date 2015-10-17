@@ -62,3 +62,14 @@ Navigate to create new item window when the button is clicked
 ###Output:
 - Test case 1.4
 - Error message
+
+##Test case 1.7 Failed create new item with too short author
+
+###Input:
+- Add button is pushed
+- Author is shorter than limit
+
+###Output:
+- Test case 1.4
+- Error message
+
