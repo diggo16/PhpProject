@@ -36,7 +36,7 @@ class Item
      * @param string $title
      * @param string $text
      */
-    public function __construct($title, $author, $text, $uniqueID) 
+    public function __construct($title = null, $author = null, $text = null, $uniqueID = null) 
     {
         $this->title = $title;
         $this->text = $text;
