@@ -17,4 +17,29 @@ class ErrorMessages
     {
         return "Error in loading the items";
     }
+    public function getCreatedItemMesssage()
+    {
+        return "Created item!";
+    }
+    public function getMessageByNumber($number)
+    {
+        $message = "";
+        switch ($number) 
+        {
+            case 1:
+            {
+                $message = $this->getTitleTooShort();
+                break;
+            }
+            default:
+            {
+                break;
+            }       
+        }
+        return $message;
+    }
+    private function getTitleTooShort()
+    {
+        return "Title must be minimum 3 characters";
+    }
 }

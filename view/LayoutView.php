@@ -44,7 +44,7 @@ class LayoutView
      */
     private function getCorrectOutput($itemListViewString, $itemViewString, CreateItemView $createItemView)
     {
-        if($createItemView->isButtonClicked())
+        if($createItemView->isItemButtonClicked())
         {
             return $createItemView->getCreateItemForm();
         }
@@ -67,7 +67,7 @@ class LayoutView
     private function getButtonOutput(CreateItemView $createItemView)
     {
         $button = "";
-        if(!$createItemView->isButtonClicked())
+        if(!$createItemView->isItemButtonClicked())
         {
             $button = $createItemView->getCreateItemButton();
         }

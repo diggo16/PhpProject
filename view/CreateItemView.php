@@ -6,25 +6,41 @@
  */
 class CreateItemView 
 {
-    public $get;
+    private $get;
+    private $post;
+    private $session;
     
-    public static $createButtonName = "CreateItemView::CreateItemButton";
-    public static $buttonName = "button";
-    public static $title = "title";
-    public static $author = "author";
-    public static $text = "text";
-    public static $add = "add";
-    public static $formId = "createItemForm";
-    public static $message = "message";
+    private static $createButtonName = "CreateItemView::CreateItemButton";
+    private static $buttonName = "button";
+    private static $title = "title";
+    private static $author = "author";
+    private static $text = "text";
+    private static $add = "add";
+    private static $formId = "createItemForm";
+    private static $message = "message";
+    
     public function __construct() 
     {
         $this->get = new GetObjects();
+        $this->post = new PostObjects();
+        $this->session = new Session();
+    }
+    public function getResponse()
+    {
+        if($this->isItemButtonClicked())
+        {
+            return $this->getCreateItemForm();
+        }
+        if($this->isAddButtonPushed())
+        {
+            
+        }
     }
     public function getCreateItemButton()
     {
          return " <button type='button' onclick=\"location.href ='?" . self::$buttonName . "=" . self::$createButtonName . "';\">Create item</button>";
     }
-    public function isButtonClicked()
+    public function isItemButtonClicked()
     {
         $button = $this->get->getObject(self::$buttonName);
         if(strcmp(self::$createButtonName, $button) == 0)
@@ -32,9 +48,29 @@ class CreateItemView
             return true;
         }
     }
+    public function isAddButtonPushed()
+    {
+        if(isset($_POST[self::$add]))
+        {
+            return true;
+        }
+        return false;
+    }
+    public function getTitle()
+    {
+        return $this->post->getString(self::$title);
+    }
+    public function getText()
+    {
+        return $this->post->getString(self::$text);
+    }
+    public function getAuthor()
+    {
+        return $this->post->getString(self::$author);
+    }
     public function getCreateItemForm()
     {
-        $message = "message";
+        $message = $this->session->getSession($this->session->getCreateItemMessage());
         return "<h2>Create new item</h2>
 			<form action='?" . self::$buttonName . "=" . self::$createButtonName . "' method='post' enctype='multipart/form-data' id='" . self::$formId . "'>
 				<fieldset>
@@ -55,9 +91,7 @@ class CreateItemView
                                         <input id='" .self::$add . "' type='submit' name='" .self::$add . "'  value='add' />
 					<br/>
                                        
-				</fieldset>
-                        <br>
-                        
+				</fieldset>                     
                         </form>";
     }
 }

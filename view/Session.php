@@ -61,5 +61,9 @@ class Session
     {
         return "session:message";
     }
+    public function getCreateItemMessage()
+    {
+        return "createItem::message";
+    }
         
 }

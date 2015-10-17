@@ -40,11 +40,11 @@ class ItemsController
      * Get the items
      * @param Items $items
      */
-    public function __construct(Items $items, $itemName) 
+    public function __construct(Items $items, $itemListView) 
     {
         $this->items = &$items;
         $this->get = new GetObjects();
-        $this->itemName = $itemName;
+        $this->itemName = $itemListView->getItemName();
         
         $server = new Server();
         $this->database = new ItemDAL($server->getDocumentRootPath());

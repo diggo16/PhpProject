@@ -21,24 +21,30 @@ require_once 'model/ItemDAL.php';
 require_once 'view/Session.php';
 require_once 'view/ErrorMessages.php';
 require_once 'view/CreateItemView.php';
+require_once 'controller/CreateItemController.php';
+require_once 'view/PostObjects.php';
+require_once 'model/CreateItemRules.php';
+require_once 'model/RandomString.php';
 
 /*
  * Create objects
  */
 $items = new Items();
+$item = new Item();
 
 $itemListView = new ItemListView($items);
 $itemView = new ItemView($items);
 $createItemView = new CreateItemView();
 $layoutView = new LayoutView();
 
-$controller = new ItemsController($items, $itemListView->getItemName());
+$itemController = new ItemsController($items, $itemListView);
+$createItemController = new CreateItemController($item, $createItemView);
 
 /*
  * Update items
  */
-$controller->updateItems();
-
+$itemController->updateItems();
+$createItemController->CheckNewItem($item, $items);
 
 /*
  * Show website
@@ -47,4 +53,4 @@ $layoutView->render($itemListView, $itemView, $createItemView);
 /*
  * Close everything
  */
-$controller->close();
+$itemController->close();
