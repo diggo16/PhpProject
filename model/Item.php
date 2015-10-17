@@ -88,6 +88,10 @@ class Item
     {
         return $this->uniqueID;
     }
+    public function setUniqueID($id)
+    {
+        $this->uniqueID = $id;
+    }
     /**
      * Return true if the strings are the same else false
      * @param string $anotherID
