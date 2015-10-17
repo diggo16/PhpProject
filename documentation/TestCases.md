@@ -44,6 +44,7 @@ Navigate to create new item window when the button is clicked
 - Create button is shown
 
 ##Test case 1.5 Failed create new item with too short title
+Tried to create an item with too short title
 
 ###Input:
 - Add button is pushed
@@ -54,6 +55,7 @@ Navigate to create new item window when the button is clicked
 - Error message
 
 ##Test case 1.6 Failed create new item with too long title
+Tried to create an item with too long title
 
 ###Input:
 - Add button is pushed
@@ -64,6 +66,7 @@ Navigate to create new item window when the button is clicked
 - Error message
 
 ##Test case 1.7 Failed create new item with too short author
+Tried to create an item with too short author
 
 ###Input:
 - Add button is pushed
@@ -74,6 +77,7 @@ Navigate to create new item window when the button is clicked
 - Error message
 
 ##Test case 1.8 Failed create new item with too long author
+Tried to create an item with too long author
 
 ###Input:
 - Add button is pushed
@@ -84,6 +88,7 @@ Navigate to create new item window when the button is clicked
 - Error message
 
 ##Test case 1.9 Failed create new item with too short text
+Tried to create an item with too short text
 
 ###Input:
 - Add button is pushed
@@ -94,6 +99,7 @@ Navigate to create new item window when the button is clicked
 - Error message
 
 ##Test case 1.10 Failed create new item with too long text
+Tried to create an item with too long text
 
 ###Input:
 - Add button is pushed
@@ -102,3 +108,13 @@ Navigate to create new item window when the button is clicked
 ###Output:
 - Test case 1.4
 - Error message
+
+##Test case 1.11 Succeed to create a new item
+Successfully created a new item
+
+##Input:
+- Add button is pushed
+- All information is valid
+
+###Output:
+- Test case 1.1
