@@ -16,9 +16,9 @@ class LayoutView
      * Echo the views
      * @param ItemListView $itemListView
      */
-    public function render(ItemListView $itemListView, ItemView $itemView, CreateItemView $createItemView)
+    public function render(ItemListView $itemListView, ItemView $itemView, CreateItemView $createItemView, Item $newItem)
     {
-        $output = $this->getCorrectOutput($itemListView->getTableOutput(), $itemView->getItemHTMLString(), $createItemView);
+        $output = $this->getCorrectOutput($itemListView->getTableOutput(), $itemView->getItemHTMLString(), $createItemView, $newItem);
         echo '<!DOCTYPE html>
         <html>
           <head>
@@ -42,21 +42,21 @@ class LayoutView
      * @param string $itemViewString
      * @return string htmlString
      */
-    private function getCorrectOutput($itemListViewString, $itemViewString, CreateItemView $createItemView)
+    private function getCorrectOutput($itemListViewString, $itemViewString, CreateItemView $createItemView, Item $newItem)
     {
+        if($createItemView->isAddButtonPushed() && $newItem->isEmpty() == false)
+        {
+            return $itemListViewString;
+        }
         if($createItemView->isItemButtonClicked())
         {
             return $createItemView->getCreateItemForm();
         }
-        else
+        if($itemViewString != null)
         {
-             if($itemViewString != null)
-            {
-                return $itemViewString;
-            }
-            return $itemListViewString;
+            return $itemViewString;
         }
-       
+        return $itemListViewString;
     }
     private function getErrorMessageOutput()
     {

@@ -49,7 +49,7 @@ $createItemController->CheckNewItem($item, $items);
 /*
  * Show website
  */
-$layoutView->render($itemListView, $itemView, $createItemView);
+$layoutView->render($itemListView, $itemView, $createItemView, $item);
 /*
  * Close everything
  */

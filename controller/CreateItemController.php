@@ -48,6 +48,9 @@ class CreateItemController
             $newItem = new Item($title, $author, $text);
 
             $errorNumber = $this->createItemRules->checkItem($newItem);
+            /*
+             * If the item is valid
+             */
             if($errorNumber === 0)
             {
                 $this->setUniqueID($items, $title, $newItem);
@@ -56,6 +59,9 @@ class CreateItemController
                 $this->database->addItem($this->newItem);
                 $this->session->setSession($this->session->getSessionMessage(), $this->errorMessages->getCreatedItemMesssage);
             }
+            /*
+             * Else show error and stay in create item form
+             */
             else
             {
                 $this->session->setSession($this->session->getCreateItemMessage(), $this->errorMessages->getMessageByNumber($errorNumber));

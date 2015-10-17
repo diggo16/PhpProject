@@ -105,4 +105,12 @@ class Item
         }
         return false;
     }
+    public function isEmpty()
+    {
+        if($this->title == null && $this->author == null && $this->text == null)
+        {
+            return true;
+        }
+        return false;
+    }
 }
