@@ -14,9 +14,14 @@ class CreateItemRules
     }
     public function checkItem(Item $item)
     {
-        if($this->checkTitleTooShort($item->getTitle()))
+        $title = $item->getTitle();
+        if($this->checkTitleTooShort($title))
         {
             return 1;
+        }
+        else if($this->checkTitleTooLong($title))
+        {
+            return 2;
         }
         return 0;
     }
@@ -27,10 +32,18 @@ class CreateItemRules
      */
     private function checkTitleTooShort($title)
     {
-        if(strlen($title) < 3)
+        if(strlen($title) <= self::$titleMinLength)
         {
             return true;
         }
         return false;
+    }
+    private function checkTitleTooLong($title)
+    {
+       if(strlen($title) >= self::$titleMaxLength)
+        {
+            return true;
+        }
+        return false; 
     }
 }

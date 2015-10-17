@@ -31,6 +31,11 @@ class ErrorMessages
                 $message = $this->getTitleTooShort();
                 break;
             }
+            case 2:
+            {
+                $message = $this->getTitleTooLong();
+                break;
+            }
             default:
             {
                 break;
@@ -41,5 +46,9 @@ class ErrorMessages
     private function getTitleTooShort()
     {
         return "Title must be minimum 3 characters";
+    }
+    private function getTitleTooLong()
+    {
+        return "Title must be max 26 characters";
     }
 }

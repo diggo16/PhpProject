@@ -45,13 +45,7 @@ class CreateItemController
         
         if($errorNumber === 0)
         {
-            do
-            {
-                $uniqueID = $this->randomString->generateUniqueID($title);
-            }
-            while($items->isUniqueIDTaken($uniqueID));
-            $newItem->setUniqueID($uniqueID);
-            
+            $this->setUniqueID($items, $title, $newItem);
             
             $this->newItem = $newItem;
             $this->database->addItem($this->newItem);
@@ -61,5 +55,14 @@ class CreateItemController
         {
             $this->session->setSession($this->session->getCreateItemMessage(), $this->errorMessages->getMessageByNumber($errorNumber));
         }
+    }
+    private function setUniqueID($items, $title, &$newItem)
+    {
+        do
+        {
+            $uniqueID = $this->randomString->generateUniqueID($title);
+        }
+        while($items->isUniqueIDTaken($uniqueID));
+        $newItem->setUniqueID($uniqueID);
     }
 }
