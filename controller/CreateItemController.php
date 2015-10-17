@@ -13,6 +13,8 @@ class CreateItemController
     private $createItemRules;
     private $randomString;
     private $session;
+    
+    private $isAddButtonPushed;
     /**
      * 
      * @param Item $newItem
@@ -29,31 +31,37 @@ class CreateItemController
        
        $server = new Server();
        $this->database = new ItemDAL($server->getDocumentRootPath());
+       
+       $this->isAddButtonPushed = $view->isAddButtonPushed();
     }
     /**
      * Check if the item is valid
      */
     public function CheckNewItem(Item &$newItem, Items $items)
     {
-        $this->session->removeSession($this->session->getCreateItemMessage());
-        $title = $this->view->getTitle();
-        $author = $this->view->getAuthor();
-        $text = $this->view->getText();
-        $newItem = new Item($title, $author, $text);
-        
-        $errorNumber = $this->createItemRules->checkItem($newItem);
-        if($errorNumber === 0)
+        if($this->isAddButtonPushed)
         {
-            $this->setUniqueID($items, $title, $newItem);
-            
-            $this->newItem = $newItem;
-            $this->database->addItem($this->newItem);
-            $this->session->setSession($this->session->getSessionMessage(), $this->errorMessages->getCreatedItemMesssage);
+             $this->session->removeSession($this->session->getCreateItemMessage());
+            $title = $this->view->getTitle();
+            $author = $this->view->getAuthor();
+            $text = $this->view->getText();
+            $newItem = new Item($title, $author, $text);
+
+            $errorNumber = $this->createItemRules->checkItem($newItem);
+            if($errorNumber === 0)
+            {
+                $this->setUniqueID($items, $title, $newItem);
+
+                $this->newItem = $newItem;
+                $this->database->addItem($this->newItem);
+                $this->session->setSession($this->session->getSessionMessage(), $this->errorMessages->getCreatedItemMesssage);
+            }
+            else
+            {
+                $this->session->setSession($this->session->getCreateItemMessage(), $this->errorMessages->getMessageByNumber($errorNumber));
+            }
         }
-        else
-        {
-            $this->session->setSession($this->session->getCreateItemMessage(), $this->errorMessages->getMessageByNumber($errorNumber));
-        }
+       
     }
     private function setUniqueID($items, $title, &$newItem)
     {
