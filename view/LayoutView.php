@@ -30,7 +30,7 @@ class LayoutView
             ' . $this->getErrorMessageOutput()
             .'<div class="container">
             ' . $output
-              . $this->getButtonOutput($createItemView)
+              . $this->getButtonOutput($createItemView, $itemListView, $itemView)
             .'</div>
            </body>
         </html>
@@ -65,12 +65,16 @@ class LayoutView
        $errorMessage = '<p><font color="red">' . $message . '</font></p>';
        return $errorMessage;
     }
-    private function getButtonOutput(CreateItemView $createItemView)
+    private function getButtonOutput(CreateItemView $createItemView, ItemListView $itemListView, ItemView $itemView)
     {
         $button = "";
         if(!$createItemView->isItemButtonClicked())
         {
             $button = $createItemView->getCreateItemButton();
+        }
+        if($itemListView->isItemViewed())
+        {
+            $button = $itemView->getBackButton();
         }
         return $button;
     }

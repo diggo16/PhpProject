@@ -11,6 +11,7 @@ class ItemListView
      * @var Items $items
      */
     private $items;
+    private $get;
     private static $itemName = "itemID";
     /**
      * Set $items
@@ -19,6 +20,7 @@ class ItemListView
     public function __construct(Items $items) 
     {
         $this->setItems($items);
+        $this->get = new GetObjects();
     }
     /**
      * Return a table with the items
@@ -49,5 +51,13 @@ class ItemListView
     public function setItems(Items $items)
     {
         $this->items = $items;
+    }
+    public function isItemViewed()
+    {
+        if($this->get->isGetSet(self::$itemName))
+        {
+            return true;
+        }
+        return false;
     }
 }

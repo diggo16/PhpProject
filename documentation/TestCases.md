@@ -118,3 +118,11 @@ Successfully created a new item
 
 ###Output:
 - Test case 1.1
+
+##Test case 1.12 Go back to item list
+
+##Input:
+- back button is pushed
+
+###Output:
+- Test case 1.1

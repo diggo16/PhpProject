@@ -26,7 +26,7 @@ class ItemView
         {
             return '<b>' . $item->getTitle() . '</b> <br />
                     ' . $item->getText() . '<br />
-                    By: ' . $item->getAuthor();
+                    By: ' . $item->getAuthor() . "<br />";
         }
         return null;
     }
@@ -40,5 +40,9 @@ class ItemView
             }
         }
         return null;
+    }
+    public function getBackButton()
+    {
+        return " <button type='button' onclick=\"location.href ='?';\">Back</button>";
     }
 }
