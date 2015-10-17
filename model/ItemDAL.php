@@ -12,6 +12,11 @@ class ItemDAL
     {
         $this->itemPath = $root . "/data/items.xml";
     }
+    /**
+     * 
+     * @param Items $items
+     * @throws Exception
+     */
     public function loadItems(Items $items)
     {
         try
@@ -29,6 +34,28 @@ class ItemDAL
         catch (Exception $ex) 
         {
             throw new Exception();
+        }
+    }
+    public function addItem(Item $item)
+    {
+        try
+        {
+            $xmlString = file_get_contents($this->itemPath);
+
+            $xmlItems = new SimpleXMLElement($xmlString);
+            
+            $xmlItem = $xmlItems->addChild("item");
+            $xmlItem->addChild("title", $item->getTitle());
+            $xmlItem->addChild("author", $item->getAuthor());
+            $xmlItem->addChild("text", $item->getText());
+            $xmlItem->addChild("uniqueID", $item->getUniqueID());
+            
+            $xmlItems->asXML($this->itemPath);
+            
+        }
+        catch(Exception $e)
+        {
+            
         }
     }
 }

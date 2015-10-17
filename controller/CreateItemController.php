@@ -57,7 +57,6 @@ class CreateItemController
 
                 $this->newItem = $newItem;
                 $this->database->addItem($this->newItem);
-                $this->session->setSession($this->session->getSessionMessage(), $this->errorMessages->getCreatedItemMesssage);
             }
             /*
              * Else show error and stay in create item form

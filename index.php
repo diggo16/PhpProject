@@ -43,8 +43,8 @@ $createItemController = new CreateItemController($item, $createItemView);
 /*
  * Update items
  */
-$itemController->updateItems();
 $createItemController->CheckNewItem($item, $items);
+$itemController->updateItems();
 
 /*
  * Show website

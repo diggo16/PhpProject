@@ -46,7 +46,8 @@ class LayoutView
     {
         if($createItemView->isAddButtonPushed() && $newItem->isEmpty() == false)
         {
-            return $itemListViewString;
+            header("location:?");
+            //return $itemListViewString;
         }
         if($createItemView->isItemButtonClicked())
         {
