@@ -42,7 +42,6 @@ class CreateItemController
         $newItem = new Item($title, $author, $text);
         
         $errorNumber = $this->createItemRules->checkItem($newItem);
-        
         if($errorNumber === 0)
         {
             $this->setUniqueID($items, $title, $newItem);

@@ -73,3 +73,12 @@ Navigate to create new item window when the button is clicked
 - Test case 1.4
 - Error message
 
+##Test case 1.8 Failed create new item with too short text
+
+###Input:
+- Add button is pushed
+- Text is shorter than limit
+
+###Output:
+- Test case 1.4
+- Error message

@@ -13,6 +13,10 @@
  */
 class ErrorMessages 
 {
+    private static $title = "title";
+    private static $author = "author";
+    private static $text = "text";
+    
     public function getErrorInLoadingItems()
     {
         return "Error in loading the items";
@@ -36,6 +40,21 @@ class ErrorMessages
                 $message = $this->getTitleTooLong();
                 break;
             }
+            case 3:
+            {
+                $message = $this->getAuthorTooShort();
+                break;
+            }
+            case 4:
+            {
+                $message = $this->getAuthorTooLong();
+                break;
+            }
+            case 5:
+            {
+                $message = $this->getTextTooShort();
+                break;
+            }
             default:
             {
                 break;
@@ -45,10 +64,30 @@ class ErrorMessages
     }
     private function getTitleTooShort()
     {
-        return "Title must be minimum 3 characters";
+        return $this->tooShort(self::$title, "3");
     }
     private function getTitleTooLong()
     {
-        return "Title must be max 26 characters";
+        return $this->tooLong(self::$title, "26");
+    }
+    private function getAuthorTooShort()
+    {
+        return $this->tooShort(self::$author, "2");
+    }
+    private function getAuthorTooLong()
+    {
+        return $this->tooLong(self::$author, "26");
+    }
+    private function getTextTooShort()
+    {
+        return $this->tooShort(self::$text, "8");
+    }
+    private function tooShort($name, $value)
+    {
+        return $name . " must be minimum " . $value . " characters";
+    }
+    private function tooLong($name, $value)
+    {
+        return $name . " must be maximum " . $value . " characters";
     }
 }
