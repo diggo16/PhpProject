@@ -70,4 +70,15 @@ class Items
             $item->setIsClicked(FALSE);
         } 
     }
+    public function isUniqueIDTaken($uniqueID)
+    {
+        foreach (self::$items as $item) 
+        {
+            if($item->compareUniqueID($uniqueID))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
