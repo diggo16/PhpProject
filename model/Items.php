@@ -70,6 +70,11 @@ class Items
             $item->setIsClicked(FALSE);
         } 
     }
+    /**
+     * Check if the unique ID is taken by another item
+     * @param string $uniqueID
+     * @return boolean isTaken
+     */
     public function isUniqueIDTaken($uniqueID)
     {
         foreach (self::$items as $item) 
