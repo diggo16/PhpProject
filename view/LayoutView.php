@@ -7,18 +7,28 @@
 class LayoutView 
 {
     private $session;
+    
+    private $itemListView;
+    private $createItemView;
+    private $itemView;
+    private $newItem;
 
-    public function __construct() 
+    public function __construct(ItemListView $itemListView, ItemView $itemView, CreateItemView $createItemView, Item $newItem) 
     {
         $this->session = new Session();
+        
+        $this->itemListView = $itemListView;
+        $this->createItemView = $createItemView;
+        $this->itemView = $itemListView;
+        $this->newItem = $newItem;
+        $this->itemView = $itemView;
     }
     /**
      * Echo the views
-     * @param ItemListView $itemListView
      */
-    public function render(ItemListView $itemListView, ItemView $itemView, CreateItemView $createItemView, Item $newItem)
+    public function render()
     {
-        $output = $this->getCorrectOutput($itemListView->getTableOutput(), $itemView->getItemHTMLString(), $createItemView, $newItem);
+        $output = $this->getCorrectOutput();
         echo '<!DOCTYPE html>
         <html>
           <head>
@@ -27,10 +37,11 @@ class LayoutView
           </head>
           <body>
             <h1>Project</h1>
-            ' . $this->getErrorMessageOutput()
+            ' . $this->getBackButton()
+            . $this->getErrorMessageOutput()
             .'<div class="container">
             ' . $output
-              . $this->getButtonOutput($createItemView, $itemListView, $itemView)
+              . $this->getButtonOutput()
             .'</div>
            </body>
         </html>
@@ -38,26 +49,24 @@ class LayoutView
     }
     /**
      * 
-     * @param string $itemListViewString
-     * @param string $itemViewString
-     * @return string htmlString
+     * @return string HTMLString
      */
-    private function getCorrectOutput($itemListViewString, $itemViewString, CreateItemView $createItemView, Item $newItem)
+    private function getCorrectOutput()
     {
-        if($createItemView->isAddButtonPushed() && $newItem->isEmpty() == false)
+        if($this->createItemView->isAddButtonPushed() && $this->newItem->isEmpty() == false)
         {
             header("location:?");
             //return $itemListViewString;
         }
-        if($createItemView->isItemButtonClicked())
+        if($this->createItemView->isItemButtonClicked())
         {
-            return $createItemView->getCreateItemForm();
+            return $this->createItemView->getCreateItemForm();
         }
-        if($itemViewString != null)
+        if($this->itemView->getItemHTMLString() != null)
         {
-            return $itemViewString;
+            return $this->itemView->getItemHTMLString();
         }
-        return $itemListViewString;
+        return $this->itemListView->getTableOutput();
     }
     private function getErrorMessageOutput()
     {
@@ -65,17 +74,21 @@ class LayoutView
        $errorMessage = '<p><font color="red">' . $message . '</font></p>';
        return $errorMessage;
     }
-    private function getButtonOutput(CreateItemView $createItemView, ItemListView $itemListView, ItemView $itemView)
+    private function getButtonOutput()
     {
         $button = "";
-        if(!$createItemView->isItemButtonClicked())
+        if(!$this->createItemView->isItemButtonClicked() && !$this->itemListView->isItemViewed())
         {
-            $button = $createItemView->getCreateItemButton();
-        }
-        if($itemListView->isItemViewed())
-        {
-            $button = $itemView->getBackButton();
+            $button = $this->createItemView->getCreateItemButton();
         }
         return $button;
+    }
+    private function getBackButton()
+    {
+         if($this->itemListView->isItemViewed() || $this->createItemView->isItemButtonClicked())
+         {
+             return $this->itemView->getBackButton() . '<br />';
+         }
+         return "";
     }
 }

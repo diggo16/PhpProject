@@ -35,7 +35,7 @@ $item = new Item();
 $itemListView = new ItemListView($items);
 $itemView = new ItemView($items);
 $createItemView = new CreateItemView();
-$layoutView = new LayoutView();
+$layoutView = new LayoutView($itemListView, $itemView, $createItemView, $item);
 
 $itemController = new ItemsController($items, $itemListView);
 $createItemController = new CreateItemController($item, $createItemView);
@@ -49,7 +49,7 @@ $itemController->updateItems();
 /*
  * Show website
  */
-$layoutView->render($itemListView, $itemView, $createItemView, $item);
+$layoutView->render();
 /*
  * Close everything
  */
