@@ -1,6 +1,6 @@
 <?php
 /**
- * Description of StartController
+ * controller for the items
  *
  * @author Daniel
  */
@@ -52,6 +52,9 @@ class ItemsController
         $this->session = new Session();
         $this->errorMessages = new ErrorMessages();
     }
+    /**
+     * Update the items
+     */
     public function updateItems()
     {
         try
@@ -66,6 +69,9 @@ class ItemsController
         }
         
     }
+    /**
+     * Set the item to clicked if there is any
+     */
     private function isItemClicked()
     {
         if($this->get->isGetSet($this->itemName))
@@ -73,6 +79,9 @@ class ItemsController
             $this->items->setClickedItem($this->get->getObject($this->itemName));
         }
     }
+    /**
+     * Close the session with the message
+     */
     public function close()
     {
         $this->session->removeSession($this->session->getSessionMessage());
