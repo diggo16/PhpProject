@@ -28,7 +28,7 @@ class PostObjects
     {
         if(isset($_POST[$POSTName]))
         {
-            return filter_input(INPUT_POST,$POSTName,FILTER_SANITIZE_STRING);
+            return htmlentities(filter_input(INPUT_POST,$POSTName,FILTER_SANITIZE_STRING));
         }
         return "";
         
