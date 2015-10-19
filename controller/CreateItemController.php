@@ -7,42 +7,42 @@
 class CreateItemController 
 {
     /**
-     *
+     * model/Item
      * @var Item $newItem
      */
     private $newItem;
     /**
-     *
+     * view/ErrorMessages
      * @var ErrorMessages $errorMessages
      */
     private $errorMessages;
     /**
-     *
+     * view/CreateItemView
      * @var CreateItemView $view
      */
     private $view;
     /**
-     *
+     * model/ItemDAL
      * @var ItemDAL $database
      */
     private $database;
     /**
-     *
+     * model/CreateItemRules
      * @var CreateItemRules $createItemRules
      */
     private $createItemRules;
     /**
-     *
+     * model/RandomString
      * @var RandomString $randomString
      */
     private $randomString;
     /**
-     *
+     * view/Session
      * @var Session $session
      */
     private $session;
     /**
-     *
+     * Boolean if the add button is pushed
      * @var boolean $isAddButtonPushed
      */
     private $isAddButtonPushed;
