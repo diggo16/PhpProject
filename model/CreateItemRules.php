@@ -1,23 +1,46 @@
 <?php
 /**
- * Description of CreateItemRules
+ * A class that validates an item
  *
  * @author Daniel
  */
 class CreateItemRules 
 {
+    /**
+     * Minimum length on the title
+     * @var int $titleMinLength 
+     */
     private static $titleMinLength = 3;
+    /**
+     * Maximum length on the title
+     * @var int $titleMaxLength 
+     */
     private static $titleMaxLength = 26;
-    
+    /**
+     * Minimum length on the author
+     * @var int $authorMinLength 
+     */
     private static $authorMinLength = 2;
+    /**
+     * Maximum length on the author
+     * @var int $authorMaxLength 
+     */
     private static $authorMaxLength = 26;
-    
+    /**
+     * Minimum length on the text
+     * @var int $textMinLength 
+     */
     private static $textMinLength = 8;
+    /**
+     * Maximum length on the text
+     * @var int $textMaxLength 
+     */
     private static $textMaxLength = 360;
-    public function __construct() 
-    {
-       
-    }
+    /**
+     * Return a number that represent an error, if everything is correct return 0
+     * @param Item $item
+     * @return int errorCode
+     */
     public function checkItem(Item $item)
     {
         $title = $item->getTitle();
@@ -58,22 +81,47 @@ class CreateItemRules
     {
         return $this->checkTooShort($title, self::$titleMinLength);     
     }
+    /**
+     * Check if the title is too long
+     * @param string $title
+     * @return boolean isTooLong
+     */
     private function checkTitleTooLong($title)
     {
        return $this->checkTooLong($title, self::$titleMaxLength);
     }
+    /**
+     * Check if the author is too short
+     * @param string $author
+     * @return boolean isTooShort
+     */
     private function checkAuthorTooShort($author)
     {
         return $this->checkTooShort($author, self::$authorMinLength);     
     }
+    /**
+     * Check if the author is too long
+     * @param string $author
+     * @return boolean isTooLong
+     */
     private function checkAuthorTooLong($author)
     {
         return $this->checkTooLong($author, self::$authorMaxLength);     
     }
+    /**
+     * Check if the text is too short
+     * @param string $text
+     * @return boolean isTooShort
+     */
     private function checkTextTooShort($text)
     {
         return $this->checkTooShort($text, self::$textMinLength);     
     }
+    /**
+     * Check if the text is too long
+     * @param string $text
+     * @return boolean isTooLong
+     */
     private function checkTextTooLong($text)
     {
        return $this->checkTooLong($text, self::$textMaxLength);     
@@ -105,9 +153,5 @@ class CreateItemRules
             return true;
         }
         return false; 
-    }
-    public function trimString(&$str)
-    {
-        $str = filter_var(trim($str), FILTER_SANITIZE_STRING);
     }
 }
