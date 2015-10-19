@@ -63,7 +63,7 @@ class CreateItemController
        $server = new Server();
        $this->database = new ItemDAL($server->getDocumentRootPath());
        
-       $this->isAddButtonPushed = $view->isAddButtonPushed();
+       $this->isAddButtonPushed = $view->isAddButtonClicked();
     }
     /**
      * Check if the item is valid
