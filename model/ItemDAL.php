@@ -24,7 +24,7 @@ class ItemDAL
      * @param Items $items
      * @throws Exception
      */
-    public function loadItems(Items $items)
+    public function loadItems(Items &$items)
     {
         try
         {

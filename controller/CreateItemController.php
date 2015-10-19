@@ -70,7 +70,7 @@ class CreateItemController
      * @param Item $newItem
      * @param Items $items
      */
-    public function CheckNewItem(Item &$newItem, Items $items)
+    public function CheckNewItem(&$newItem, Items $items)
     {
         // If the add button is pushed
         if($this->isAddButtonPushed)
@@ -107,8 +107,9 @@ class CreateItemController
      * @param string $title
      * @param Item $newItem
      */
-    private function setUniqueID(Item $items, $title, Item &$newItem)
+    private function setUniqueID(Items $items, $title, Item &$newItem)
     {
+        
         // Generate a string until it is an unique
         do
         {

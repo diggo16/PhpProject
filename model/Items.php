@@ -10,7 +10,7 @@ class Items
      * Static array of the object model/Item
      * @var array $items
      */
-    private static $items;
+    private $items;
     /**
      * Set $items
      * @param Item[] $items
@@ -25,15 +25,15 @@ class Items
      */
     public function getItems()
     {
-        return self::$items;
+        return $this->items;
     }
     /**
      * Set the items to the array $items
      * @param array $items
      */
     public function setItems($items)
-    {
-       self::$items = $items; 
+    {        
+       $this->items = $items; 
     }
     /**
      * Return an item if one is clicked
@@ -41,7 +41,7 @@ class Items
      */
     public function getClickedItem()
     {
-        foreach (self::$items as $item) 
+        foreach ($this->items as $item) 
         {
             return $item;
         }
@@ -52,7 +52,7 @@ class Items
      */
     public function setClickedItem($uniqueID)
     {
-        foreach (self::$items as $item) 
+        foreach ($this->items as $item) 
         {
             if($item->compareUniqueID($uniqueID))
             {
@@ -65,7 +65,7 @@ class Items
      */
     public function resetItemClicks()
     {
-       foreach (self::$items as $item) 
+       foreach ($this->items as $item) 
         {
             $item->setIsClicked(FALSE);
         } 
@@ -77,7 +77,7 @@ class Items
      */
     public function isUniqueIDTaken($uniqueID)
     {
-        foreach (self::$items as $item) 
+        foreach ($this->items as $item) 
         {
             if($item->compareUniqueID($uniqueID))
             {

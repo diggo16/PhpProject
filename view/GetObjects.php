@@ -17,7 +17,7 @@ class GetObjects
         if(isset($_GET[$name]))
         {
              $object = $_GET[$name];
-            return $object;
+            return $object; //htmlentities($object);
         }
       return null;
     }
