@@ -1,6 +1,6 @@
 <?php
 /**
- * Description of ItemListView
+ * View of the item list
  *
  * @author Daniel
  */
@@ -11,7 +11,15 @@ class ItemListView
      * @var Items $items
      */
     private $items;
+    /**
+     *
+     * @var GetObjects $get 
+     */
     private $get;
+    /**
+     *
+     * @var string $itemName 
+     */
     private static $itemName = "itemID";
     /**
      * Set $items
@@ -44,14 +52,26 @@ class ItemListView
         }       
         return $table; 
     }
+    /**
+     * Return the item name
+     * @return string itemName
+     */
     public function getItemName()
     {
         return self::$itemName;
     }
+    /**
+     * Set the items
+     * @param Items $items
+     */
     public function setItems(Items $items)
     {
         $this->items = $items;
     }
+    /**
+     * Check if any item is viewed
+     * @return boolean isItemViewed
+     */
     public function isItemViewed()
     {
         if($this->get->isGetSet(self::$itemName))

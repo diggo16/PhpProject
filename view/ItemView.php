@@ -1,11 +1,15 @@
 <?php
 /**
- * Description of ItemView
+ * View for the item
  *
  * @author Daniel
  */
 class ItemView 
 {
+    /**
+     * model/Items
+     * @var Items $items
+     */
     private $items;
     /**
      * Set $items
@@ -30,6 +34,10 @@ class ItemView
         }
         return null;
     }
+    /**
+     * Get the item that is clicked if there is any
+     * @return Item $item
+     */
     private function getClickedItem()
     {
         foreach ($this->items->getItems() as $item) 
@@ -41,6 +49,10 @@ class ItemView
         }
         return null;
     }
+    /**
+     * Return a HTML string of the back button
+     * @return string HTMLString
+     */
     public function getBackButton()
     {
         return " <button type='button' onclick=\"location.href ='?';\">Back</button>";

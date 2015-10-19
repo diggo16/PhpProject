@@ -79,7 +79,7 @@ class LayoutView
     private function getCorrectOutput()
     {
         // If it's a new created item, remove get and return to item list
-        if($this->createItemView->isAddButtonPushed() && $this->newItem->isEmpty() == false)
+        if($this->createItemView->isAddButtonClicked() && $this->newItem->isEmpty() == false)
         {
             header("location:?");
         }
