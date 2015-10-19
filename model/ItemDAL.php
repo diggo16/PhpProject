@@ -1,19 +1,26 @@
 <?php
 /**
- * Description of ItemDAL
+ * Handles the saved data about the items
  *
  * @author Daniel
  */
 class ItemDAL 
 {
+    /**
+     * File path to the item xml file
+     * @var string $itemPath 
+     */
     private $itemPath;
-    
+    /**
+     * Set the item path
+     * @param type $root Root path for the application
+     */
     public function __construct($root) 
     {
         $this->itemPath = $root . "/data/items.xml";
     }
     /**
-     * 
+     * Load the items
      * @param Items $items
      * @throws Exception
      */
@@ -21,21 +28,29 @@ class ItemDAL
     {
         try
         {
+            // Load the file and save it in a string
             $xmlString = file_get_contents($this->itemPath);
 
+            // Convert the string to a xml object
             $xmlItems = new SimpleXMLElement($xmlString);
             $itemsArr = array();
+            // Put the information from the xml object in an Item array
             foreach($xmlItems as $xmlItem)
             {
                 $itemsArr[] = new Item($xmlItem->title, $xmlItem->author, $xmlItem->text, $xmlItem->uniqueID);
             }
+            // Set the items to the
             $items->setItems($itemsArr);
         } 
         catch (Exception $ex) 
         {
-            throw new Exception();
+            throw new Exception("Failed to load items");
         }
     }
+    /**
+     * Add the item
+     * @param Item $item
+     */
     public function addItem(Item $item)
     {
         try
@@ -55,7 +70,7 @@ class ItemDAL
         }
         catch(Exception $e)
         {
-            
+            throw new Exception("Failed to add item");
         }
     }
 }
