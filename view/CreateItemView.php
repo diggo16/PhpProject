@@ -1,15 +1,29 @@
 <?php
 /**
- * Description of CreateItemView
+ * View for creating an item
  *
  * @author Daniel
  */
 class CreateItemView 
 {
+    /**
+     *
+     * @var GetObjcts $get
+     */
     private $get;
+    /**
+     *
+     * @var PostObjects $post
+     */
     private $post;
+    /**
+     *
+     * @var Session $session 
+     */
     private $session;
-    
+    /*
+     * Post and Get names
+     */ 
     private static $createButtonName = "CreateItemView::CreateItemButton";
     private static $buttonName = "button";
     private static $title = "title";
@@ -18,28 +32,27 @@ class CreateItemView
     private static $add = "add";
     private static $formId = "createItemForm";
     private static $message = "message";
-    
+    /**
+     * Set objects
+     */
     public function __construct() 
     {
         $this->get = new GetObjects();
         $this->post = new PostObjects();
         $this->session = new Session();
     }
-    public function getResponse()
-    {
-        if($this->isItemButtonClicked())
-        {
-            return $this->getCreateItemForm();
-        }
-        if($this->isAddButtonPushed())
-        {
-            
-        }
-    }
+    /**
+     * Return a HTML string of the create item button
+     * @return string HTMLString
+     */
     public function getCreateItemButton()
     {
          return " <button type='button' onclick=\"location.href ='?" . self::$buttonName . "=" . self::$createButtonName . "';\">Create item</button>";
     }
+    /**
+     * Return true if the create item button is clicked
+     * @return boolean isClicked
+     */
     public function isItemButtonClicked()
     {
         $button = $this->get->getObject(self::$buttonName);
@@ -48,7 +61,11 @@ class CreateItemView
             return true;
         }
     }
-    public function isAddButtonPushed()
+    /**
+     * Return true if the add item button is clicked
+     * @return boolean isClicked
+     */
+    public function isAddButtonClicked()
     {
         if(isset($_POST[self::$add]))
         {
@@ -56,18 +73,34 @@ class CreateItemView
         }
         return false;
     }
+    /**
+     * Return the title
+     * @return string title
+     */
     public function getTitle()
     {
         return $this->post->getString(self::$title);
     }
+    /**
+     * Return the text
+     * @return string text
+     */
     public function getText()
     {
         return $this->post->getString(self::$text);
     }
+    /**
+     * Return the author
+     * @return string author
+     */
     public function getAuthor()
     {
         return $this->post->getString(self::$author);
     }
+    /**
+     * Return a create item form
+     * @return string HTMLString
+     */
     public function getCreateItemForm()
     {
         $message = $this->session->getSession($this->session->getCreateItemMessage());
