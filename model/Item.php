@@ -1,6 +1,6 @@
 <?php
 /**
- * Description of Item
+ * An object that contains text and information about it
  *
  * @author Daniel
  */
@@ -32,9 +32,11 @@ class Item
      */
     private $uniqueID;
     /**
-     * Set the title and text
-     * @param string $title
-     * @param string $text
+     * Set objects
+     * @param type $title
+     * @param type $author
+     * @param type $text
+     * @param type $uniqueID
      */
     public function __construct($title = null, $author = null, $text = null, $uniqueID = null) 
     {
@@ -60,6 +62,10 @@ class Item
     {
         return $this->text;
     }
+    /**
+     * Return the author
+     * @return string $author
+     */
     public function getAuthor()
     {
         return $this->author;
@@ -88,6 +94,10 @@ class Item
     {
         return $this->uniqueID;
     }
+    /**
+     * Set unique id to $id
+     * @param string $id
+     */
     public function setUniqueID($id)
     {
         $this->uniqueID = $id;
@@ -105,6 +115,10 @@ class Item
         }
         return false;
     }
+    /**
+     * Return true if the item haven't any information else return false
+     * @return boolean isEmpty
+     */
     public function isEmpty()
     {
         if($this->title == null && $this->author == null && $this->text == null)
