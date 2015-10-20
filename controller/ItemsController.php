@@ -27,16 +27,6 @@ class ItemsController
      */
     private $session;
     /**
-     * Class that handles the item data
-     * @var ItemDAL $database
-     */
-    private $database;
-    /**
-     *
-     * @var ErrorMessages $errorMessages
-     */
-    private $errorMessages;
-    /**
      * Get the items
      * @param Items $items
      */
@@ -44,28 +34,28 @@ class ItemsController
     {
         $this->items = &$items;
         $this->get = new GetObjects();
-        $this->itemName = $itemListView->getItemName();
-        
-        $server = new Server();
-        $this->database = new ItemDAL($server->getDocumentRootPath());
-        
+        $this->itemName = $itemListView->getItemName();        
         $this->session = new Session();
-        $this->errorMessages = new ErrorMessages();
     }
     /**
      * Update the items
      */
     public function updateItems()
     {
+        // Create needed objects
+        $server = new Server();
+        $database = new ItemDAL($server->getDocumentRootPath());
+        $errorMessages = new ErrorMessages();
+        
         try
         {
-            $this->database->loadItems($this->items);
+            $database->loadItems($this->items);
             $this->items->resetItemClicks();
             $this->isItemClicked(); 
         } 
         catch (Exception $ex) 
         {
-            $this->session->setSession($this->session->getSessionMessage(), $this->errorMessages->getErrorInLoadingItems());
+            $this->session->setSession($this->session->getSessionMessage(), $errorMessages->getErrorInLoadingItems());
         }
         
     }
