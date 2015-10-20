@@ -28,6 +28,10 @@ class ErrorMessages
     {
         return "Created item!";
     }
+    public function getErrorInRemovingItem()
+    {
+        return "Error in removing the item";
+    }
     /**
      * Get the correct errorMessage depending on the number
      * @param int $number

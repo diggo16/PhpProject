@@ -80,4 +80,8 @@ class ItemListView
         }
         return false;
     }
+    public function returnToIndex()
+    {
+        header("location:?");
+    }
 }

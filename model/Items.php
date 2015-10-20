@@ -86,4 +86,21 @@ class Items
         }
         return false;
     }
+    public function removeItem($uniqueID)
+    {
+        for($i = 0; $i < $this->items; $i++)
+        {
+            if(!isset($this->items[$i]))
+            {
+                throw new Exception();
+            }
+            if($this->items[$i]->compareUniqueID($uniqueID))
+            {
+                unset($this->items[$i]);
+                $this->items = array_values($this->items);
+                return;
+            }
+        }
+        throw new Exception();
+    }
 }

@@ -81,4 +81,30 @@ class ItemDAL
             throw new Exception("Failed to add item");
         }
     }
+    /**
+     * 
+     * @param type $items
+     */
+    public function updateItems(&$items)
+    {
+        $xmlItems = new SimpleXMLElement("<?xml version='1.0' standalone='yes'?>
+                                            <items/>");
+        // Add the updated items to the xml object
+        foreach ($items->getItems() as $item) 
+        {
+            // create the new item in the xml object
+            $xmlItem = $xmlItems->addChild("item");
+            $xmlItem->addChild("title", $item->getTitle());
+            $xmlItem->addChild("author", $item->getAuthor());
+            $xmlItem->addChild("text", $item->getText());
+            $xmlItem->addChild("uniqueID", $item->getUniqueID());
+        }        
+        // Make a readable xml document of the xml object
+        $dom = new DOMDocument('1.0');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($xmlItems->asXML());
+        // Save the file
+        file_put_contents($this->itemPath, $dom->saveXML());      
+    }
 }

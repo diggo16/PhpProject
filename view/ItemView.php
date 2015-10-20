@@ -11,6 +11,7 @@ class ItemView
      * @var Items $items
      */
     private $items;
+    private static $removeName = "remove";
     /**
      * Set $items
      * @param Items $items
@@ -30,7 +31,8 @@ class ItemView
         {
             return '<b>' . $item->getTitle() . '</b> <br />
                     ' . $item->getText() . '<br />
-                    By: ' . $item->getAuthor() . "<br />";
+                    By: ' . $item->getAuthor() . "<br />
+                    <button type='button' onclick=\"location.href ='?" . self::$removeName . "=" . $item->getUniqueID() . "';\">Remove</button><br />";
         }
         return null;
     }
@@ -56,5 +58,13 @@ class ItemView
     public function getBackButton()
     {
         return " <button type='button' onclick=\"location.href ='?';\">Back</button>";
+    }
+    /**
+     * 
+     * @return string removeName
+     */
+    public function getRemoveName()
+    {
+        return self::$removeName;
     }
 }

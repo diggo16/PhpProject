@@ -21,11 +21,14 @@ class ItemsController
      * @var string $itemName
      */
     private $itemName;
+    private $errorMessages;
     /**
      * Class that handles the session
      * @var Session $session
      */
     private $session;
+    private $database;
+    private $itemListView;
     /**
      * Get the items
      * @param Items $items
@@ -36,26 +39,29 @@ class ItemsController
         $this->get = new GetObjects();
         $this->itemName = $itemListView->getItemName();        
         $this->session = new Session();
+        
+        $server = new Server();
+        $this->database = new ItemDAL($server->getDocumentRootPath());
+        $this->itemListView = $itemListView;
+        
+        $this->errorMessages = new ErrorMessages();
     }
     /**
      * Update the items
      */
-    public function updateItems()
+    public function updateItems(ItemView $itemView)
     {
-        // Create needed objects
-        $server = new Server();
-        $database = new ItemDAL($server->getDocumentRootPath());
-        $errorMessages = new ErrorMessages();
-        
+        // Create needed objects  
         try
         {
-            $database->loadItems($this->items);
+            $this->database->loadItems($this->items);
             $this->items->resetItemClicks();
-            $this->isItemClicked(); 
+            $this->isItemClicked();
+            $this->userWantsToRemoveItem($itemView);
         } 
         catch (Exception $ex) 
         {
-            $this->session->setSession($this->session->getSessionMessage(), $errorMessages->getErrorInLoadingItems());
+            $this->session->setSession($this->session->getSessionMessage(), $this->errorMessages->getErrorInLoadingItems());            
         }
         
     }
@@ -68,6 +74,29 @@ class ItemsController
         {
             $this->items->setClickedItem($this->get->getObject($this->itemName));
         }
+    }
+    /**
+     * Remove the item if there is any
+     * @param ItemView $itemView
+     */
+    private function userWantsToRemoveItem(ItemView $itemView)
+    {
+        try 
+        {
+            if($this->get->isGetSet($itemView->getRemoveName()))
+            {
+                $itemID = $this->get->getObject($itemView->getRemoveName());
+                $this->items->removeItem($itemID);
+                $this->database->updateItems($this->items);
+                $this->itemListView->returnToIndex();
+            }
+            
+        } 
+        catch (Exception $ex) 
+        {
+            $this->session->setSession($this->session->getSessionMessage(), $this->errorMessages->getErrorInRemovingItem());
+        }
+        
     }
     /**
      * Close the session with the message
