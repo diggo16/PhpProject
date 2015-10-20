@@ -47,3 +47,13 @@ The user is on the "Create a new item" site
 - 2a. The user has not filled in everything or haven't valid information
     1. System presents error message
     2. The user stays on the "Create a new item" site
+
+#Use case 5: Remove an item
+
+##Precondition
+The user is on the "Show item" site
+
+##Main scenario
+1. Starts when the user clicks on the remove button
+2. The system remove the current showing item from the item list
+4. The system return the user to the item list
