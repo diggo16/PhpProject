@@ -136,7 +136,7 @@ Successfully created a new item
 ###Output:
 - Test case 1.1
 
-##Test case 1.13 Failed to remove an item
+##Test case 1.14 Failed to remove an item
 
 ###Input:
 - remove button is pushed
