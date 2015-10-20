@@ -12,7 +12,7 @@ ini_set('display_errors', 'ON');
 require_once 'model/Items.php';
 require_once 'model/Item.php';
 require_once 'controller/ItemsController.php';
-require_once 'view/layoutView.php';
+require_once 'view/LayoutView.php';
 require_once 'view/ItemListView.php';
 require_once 'view/ItemView.php';
 require_once 'view/GetObjects.php';
