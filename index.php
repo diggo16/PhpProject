@@ -37,7 +37,7 @@ $itemView = new ItemView($items);
 $createItemView = new CreateItemView();
 
 $itemController = new ItemsController($items, $itemListView);
-$createItemController = new CreateItemController($item, $createItemView);
+$createItemController = new CreateItemController($createItemView, $items);
 
 /*
  * Update items
