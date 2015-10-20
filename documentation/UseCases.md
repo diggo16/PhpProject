@@ -8,7 +8,7 @@ Secure Considerations:
 
 - Javascript injections
 
-#Use case 1: Click on forum item
+#Use case 1: Click on item
 
 ##Main scenario
 1. Starts when user clicks on an item
@@ -32,7 +32,7 @@ Secure Considerations:
 1. Starts when the user wants to create a new item
 2. System navigate to create new item site
 
-#Use case 4: Create a new Article
+#Use case 4: Create a new item
 
 ##Precondition
 The user is on the "Create a new item" site
