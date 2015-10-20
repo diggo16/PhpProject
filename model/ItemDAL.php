@@ -55,17 +55,25 @@ class ItemDAL
     {
         try
         {
+            // Collect the xml document in a string
             $xmlString = file_get_contents($this->itemPath);
-
+            // Convert it to an xml object
             $xmlItems = new SimpleXMLElement($xmlString);
             
+            // create the new item in the xml object
             $xmlItem = $xmlItems->addChild("item");
             $xmlItem->addChild("title", $item->getTitle());
             $xmlItem->addChild("author", $item->getAuthor());
             $xmlItem->addChild("text", $item->getText());
             $xmlItem->addChild("uniqueID", $item->getUniqueID());
             
-            $xmlItems->asXML($this->itemPath);
+            // Make a readable xml document of the xml object
+            $dom = new DOMDocument('1.0');
+            $dom->preserveWhiteSpace = false;
+            $dom->formatOutput = true;
+            $dom->loadXML($xmlItems->asXML());
+            // Save the file
+            file_put_contents($this->itemPath, $dom->saveXML());
             
         }
         catch(Exception $e)
