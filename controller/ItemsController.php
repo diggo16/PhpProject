@@ -21,13 +21,25 @@ class ItemsController
      * @var string $itemName
      */
     private $itemName;
+    /**
+     *
+     * @var ErrorMessages $errorMessages
+     */
     private $errorMessages;
     /**
      * Class that handles the session
      * @var Session $session
      */
     private $session;
+    /**
+     *
+     * @var ItemDAL $database
+     */
     private $database;
+    /**
+     *
+     * @var ItemListView $itemListView
+     */
     private $itemListView;
     /**
      * Get the items
@@ -62,8 +74,7 @@ class ItemsController
         catch (Exception $ex) 
         {
             $this->session->setSession($this->session->getSessionMessage(), $this->errorMessages->getErrorInLoadingItems());            
-        }
-        
+        }    
     }
     /**
      * Set the item to clicked if there is any
@@ -91,12 +102,12 @@ class ItemsController
                 $this->itemListView->returnToIndex();
             }
             
-        } 
+        }
+        // If error in removing Item
         catch (Exception $ex) 
         {
             $this->session->setSession($this->session->getSessionMessage(), $this->errorMessages->getErrorInRemovingItem());
-        }
-        
+        }     
     }
     /**
      * Close the session with the message
