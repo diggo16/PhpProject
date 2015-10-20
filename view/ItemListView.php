@@ -11,10 +11,6 @@ class ItemListView
      * @var string $itemName 
      */
     private static $itemName = "itemID";
-    /**
-     * Set $items
-     * @param Items $items
-     */
     public function __construct() 
     {
         
