@@ -32,7 +32,7 @@ require_once 'model/RandomString.php';
 $items = new Items();
 $item = new Item();
 
-$itemListView = new ItemListView($items);
+$itemListView = new ItemListView();
 $itemView = new ItemView($items);
 $createItemView = new CreateItemView();
 
@@ -48,7 +48,7 @@ $itemController->updateItems($itemView);
  * Show website
  */
 $layoutView = new LayoutView($itemListView, $itemView, $createItemView, $item);
-$layoutView->render();
+$layoutView->render($items);
 /*
  * Close everything
  */

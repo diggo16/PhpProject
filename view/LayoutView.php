@@ -51,9 +51,9 @@ class LayoutView
     /**
      * Echo the views
      */
-    public function render()
+    public function render(Items $items)
     {
-        $output = $this->getCorrectOutput();
+        $output = $this->getCorrectOutput($items);
         echo '<!DOCTYPE html>
         <html>
           <head>
@@ -76,12 +76,12 @@ class LayoutView
      * Return the correct view for the body
      * @return string HTMLString
      */
-    private function getCorrectOutput()
+    private function getCorrectOutput(Items $items)
     {
         // If it's a new created item, remove get and return to item list
         if($this->createItemView->isAddButtonClicked() && $this->newItem->isEmpty() == false)
         {
-            header("location:?");
+            $this->itemListView->returnToIndex();
         }
         // If the create item button is pushed, show create item form
         if($this->createItemView->isItemButtonClicked())
@@ -94,7 +94,7 @@ class LayoutView
             return $this->itemView->getItemHTMLString();
         }
         // Show item list
-        return $this->itemListView->getTableOutput();
+        return $this->itemListView->getTableOutput($items);
     }
     /**
      * Return a HTML string with red text

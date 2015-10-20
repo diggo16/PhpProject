@@ -7,16 +7,6 @@
 class ItemListView 
 {
     /**
-     * Variable of the object model/Items
-     * @var Items $items
-     */
-    private $items;
-    /**
-     *
-     * @var GetObjects $get 
-     */
-    private $get;
-    /**
      *
      * @var string $itemName 
      */
@@ -25,22 +15,21 @@ class ItemListView
      * Set $items
      * @param Items $items
      */
-    public function __construct(Items $items) 
+    public function __construct() 
     {
-        $this->setItems($items);
-        $this->get = new GetObjects();
+        
     }
     /**
      * Return a table with the items
      * @return string htmlTable
      */
-    public function getTableOutput()
+    public function getTableOutput($items)
     {
         $table = '<table style="width:100%">';
         // add a row to the table
-        if($this->items->getItems() != 0)
+        if($items->getItems() != 0)
         {
-            foreach ($this->items->getItems() as $item) 
+            foreach ($items->getItems() as $item) 
             {
                 $uniqueID = $item->getUniqueID();
                 $title = $item->getTitle();
@@ -74,12 +63,16 @@ class ItemListView
      */
     public function isItemViewed()
     {
-        if($this->get->isGetSet(self::$itemName))
+        $get = new GetObjects();
+        if($get->isGetSet(self::$itemName))
         {
             return true;
         }
         return false;
     }
+    /**
+     * Clear the getObjects and return to start page
+     */
     public function returnToIndex()
     {
         header("location:?");
