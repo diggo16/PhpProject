@@ -127,11 +127,22 @@ Successfully created a new item
 ###Output:
 - Test case 1.1
 
-##Test case 1.13
+##Test case 1.13 successfully remove an item
 
 ###Input:
 - remove button is pushed
+- An existing ID in get
 
 ###Output:
 - Test case 1.1
+
+##Test case 1.13 Failed to remove an item
+
+###Input:
+- remove button is pushed
+- An non existing ID in get
+
+###Output:
+- Test case 1.1
+- Set error message to failed to remove item
 
