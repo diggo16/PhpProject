@@ -112,7 +112,7 @@ Tried to create an item with too long text
 ##Test case 1.11 Succeed to create a new item
 Successfully created a new item
 
-##Input:
+###Input:
 - Add button is pushed
 - All information is valid
 
@@ -121,8 +121,17 @@ Successfully created a new item
 
 ##Test case 1.12 Go back to item list
 
-##Input:
+###Input:
 - back button is pushed
 
 ###Output:
 - Test case 1.1
+
+##Test case 1.13
+
+###Input:
+- remove button is pushed
+
+###Output:
+- Test case 1.1
+
