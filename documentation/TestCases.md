@@ -18,8 +18,9 @@ Show an item when you click on it
 
 ###Output:
 - Title is shown
--The title of the item that was clicked is shown
--The text of the item that was clicked is shown
+- The title of the item that was clicked is shown
+- The text of the item that was clicked is shown
+- The comments to the item
 
 ##Test case 1.3 Clicked on item that no longer exists
 Show error message if the item that is clicked no longer exists
@@ -140,9 +141,37 @@ Successfully created a new item
 
 ###Input:
 - remove button is pushed
-- An non existing ID in get
+- A non existing ID in get
 
 ###Output:
 - Test case 1.1
 - Set error message to failed to remove item
+
+##Test case 1.15 Failed to comment an item
+
+###Input:
+- comment button is pushed
+- The text field is empty
+
+###Output:
+- Test case 1.2
+- Set error message to comment field is empty
+
+##Test case 1.16 Succeed to comment an item
+
+###Input:
+- comment button is pushed
+- The text field has text
+
+###Output:
+- Test case 1.2
+
+##Test case 1.17 Sort items
+
+###Input:
+- Test case 1.1
+- Sort button is pushed
+
+###Output:
+- Test case 1.1
 
