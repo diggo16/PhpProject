@@ -39,6 +39,7 @@ class ItemView
                     <button type='button' onclick=\"location.href ='?" . self::$removeName . "=" . $item->getUniqueID() . "';\">Remove</button><br />
                     <h2>Comments</h2>
                     " . $comments . "
+                    <br/>
                     <form action='?' method='post' enctype='multipart/form-data' id='commentsID'>
                         <fieldset>
 				<legend>Add comment</legend>
