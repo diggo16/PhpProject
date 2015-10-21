@@ -31,6 +31,7 @@ class LayoutView
      * @var NewItem $newItem 
      */
     private $newItem;
+    private $showError;
     /**
      * Initialize objects
      * @param ItemListView $itemListView
@@ -40,6 +41,7 @@ class LayoutView
      */
     public function __construct(ItemListView $itemListView, ItemView $itemView, CreateItemView $createItemView, Item $newItem) 
     {
+        $showError = true;
         $this->session = new Session();
         
         $this->itemListView = $itemListView;
@@ -91,7 +93,9 @@ class LayoutView
         // If an item is clicked, show the item
         if($this->itemView->getItemHTMLString() != null)
         {
-            return $this->itemView->getItemHTMLString();
+            $message = $this->getErrorMessageOutput(true);
+            $this->showError = false;
+            return $this->itemView->getItemHTMLString($message);
         }
         // Show item list
         return $this->itemListView->getTableOutput($items);
@@ -100,11 +104,17 @@ class LayoutView
      * Return a HTML string with red text
      * @return errorHTMLString
      */
-    private function getErrorMessageOutput()
+    private function getErrorMessageOutput($showMessage = false)
     {
-       $message = $this->session->getSession($this->session->getSessionMessage());
-       $errorMessage = '<p><font color="red">' . $message . '</font></p>';
-       return $errorMessage;
+        
+        if($this->showError || $showMessage)
+        {
+            $message = $this->session->getSession($this->session->getSessionMessage());
+            $errorMessage = '<p><font color="red">' . $message . '</font></p>';
+            return $errorMessage;
+        }
+        return "";
+       
     }
     /**
      * Return a create button if the view is item list

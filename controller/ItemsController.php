@@ -70,6 +70,7 @@ class ItemsController
             $this->items->resetItemClicks();
             $this->isItemClicked();
             $this->userWantsToRemoveItem($itemView);
+            $this->isCommentAdded($itemView->getCommentButtonName(), $itemView->getCommentText());
         } 
         catch (Exception $ex) 
         {
@@ -84,6 +85,15 @@ class ItemsController
         if($this->get->isGetSet($this->itemName))
         {
             $this->items->setClickedItem($this->get->getObject($this->itemName));
+            $items = $this->items->getItems();
+            foreach($items as $item)
+            {
+                if($item->getIsClicked())
+                {
+                    $this->session->setSession("id", $item->getUniqueID());
+                }
+            }
+            
         }
     }
     /**
@@ -116,5 +126,38 @@ class ItemsController
     {
         $this->session->removeSession($this->session->getSessionMessage());
         $this->session->destroySession();
+    }
+    private function isCommentAdded($buttonName, $text)
+    {
+        if($text == "")
+        {
+            $this->session->setSession($this->session->getSessionMessage(), $this->errorMessages->getEmptyCommentField());
+            return;
+        }
+        $id = "";
+        $items = $this->items->getItems();
+            foreach($items as $item)
+            {
+                if($item->getIsClicked())
+                {
+                    $id = $item->getUniqueID();
+                }
+            }
+        $post = new PostObjects();
+        if($post->isButtonPushed($buttonName))
+        {
+            $items = $this->items->getItems();
+            for($i = 0; $i <count($items); $i++)
+            {
+               if($items[$i]->compareUniqueID($id))
+                {
+                    $items[$i]->addComment($text);
+                    $this->items->setItems($items);
+                    $this->database->updateItems($this->items);;
+                    
+                } 
+            }
+
+        }
     }
 }

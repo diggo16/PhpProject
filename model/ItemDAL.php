@@ -69,6 +69,11 @@ class ItemDAL
             $xmlItem->addChild("author", $item->getAuthor());
             $xmlItem->addChild("text", $item->getText());
             $xmlItem->addChild("uniqueID", $item->getUniqueID());
+            $comments = $xmlItem->addChild("comments");
+            foreach ($item->getComments() as $comment) 
+            {
+                $comments->addChild("comment", $comment);
+            }
             
             // Make a readable xml document of the xml object
             $dom = new DOMDocument('1.0');
@@ -101,6 +106,11 @@ class ItemDAL
             $xmlItem->addChild("author", $item->getAuthor());
             $xmlItem->addChild("text", $item->getText());
             $xmlItem->addChild("uniqueID", $item->getUniqueID());
+            $comments = $xmlItem->addChild("comments");
+            foreach ($item->getComments() as $comment) 
+            {
+                $comments->addChild("comment", $comment);
+            }
         }        
         // Make a readable xml document of the xml object
         $dom = new DOMDocument('1.0');

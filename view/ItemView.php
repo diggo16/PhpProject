@@ -29,10 +29,15 @@ class ItemView
      */
     public function getItemHTMLString($message = "")
     {
+        $post = new PostObjects();
+        if(!$post->isButtonPushed(self::$commentButton))
+        {
+            $message = "";
+        }
         $item = $this->getClickedItem();
-        $comments = $this->getCommentsString($item->getComments());
         if($item != null)
         {
+            $comments = $this->getCommentsString($item->getComments());
             return '<h2>' . $item->getTitle() . '</h2>
                     ' . $item->getText() . '<br />
                     By: ' . $item->getAuthor() . "<br />
@@ -40,7 +45,7 @@ class ItemView
                     <h2>Comments</h2>
                     " . $comments . "
                     <br/>
-                    <form action='?' method='post' enctype='multipart/form-data' id='commentsID'>
+                    <form method='post' enctype='multipart/form-data' id='commentsID'>
                         <fieldset>
 				<legend>Add comment</legend>
                                 <p id='" . self::$message . "'>" . $message . "</p>
@@ -75,7 +80,7 @@ class ItemView
         {
             $string .= '<div style="border-style: double; background-color:lightblue;">
                         <p>' . $comment . '</p><br />
-                        </div>';
+                        </div><br />';
         } 
         return $string;
     }
@@ -94,5 +99,14 @@ class ItemView
     public function getRemoveName()
     {
         return self::$removeName;
+    }
+    public function getCommentButtonName()
+    {
+        return self::$commentButton;
+    }
+    public function getCommentText()
+    {
+        $post = new PostObjects();
+        return $post->getString(self::$commentText);
     }
 }

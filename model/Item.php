@@ -137,4 +137,8 @@ class Item
     {
         $this->comments = $comments;
     }
+    public function addComment($text)
+    {
+        $this->comments[] = $text;
+    }
 }

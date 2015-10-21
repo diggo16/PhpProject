@@ -32,6 +32,10 @@ class ErrorMessages
     {
         return "Error in removing the item";
     }
+    public function getEmptyCommentField()
+    {
+        return "Comment field is empty";
+    }
     /**
      * Get the correct errorMessage depending on the number
      * @param int $number
