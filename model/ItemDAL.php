@@ -19,7 +19,7 @@ class ItemDAL
     {
         $webPath = "/home/a4521600";
         $this->itemPath = $root . "/data/items.xml";
-        $this->itemPath = $webPath . "/data/items.xml";
+        //$this->itemPath = $webPath . "/data/items.xml";
     }
     /**
      * Load the items
@@ -39,7 +39,8 @@ class ItemDAL
             // Put the information from the xml object in an Item array
             foreach($xmlItems as $xmlItem)
             {
-                $itemsArr[] = new Item($xmlItem->title, $xmlItem->author, $xmlItem->text, $xmlItem->uniqueID);
+                $comments = (array) $xmlItem->comments->comment;
+                $itemsArr[] = new Item($xmlItem->title, $xmlItem->author, $xmlItem->text, $xmlItem->uniqueID, $comments);
             }
             // Set the items to the
             $items->setItems($itemsArr);
