@@ -33,20 +33,20 @@ class ItemView
         $comments = $this->getCommentsString($item->getComments());
         if($item != null)
         {
-            return '<h2>' . $item->getTitle() . '</h2> <br />
+            return '<h2>' . $item->getTitle() . '</h2>
                     ' . $item->getText() . '<br />
                     By: ' . $item->getAuthor() . "<br />
                     <button type='button' onclick=\"location.href ='?" . self::$removeName . "=" . $item->getUniqueID() . "';\">Remove</button><br />
-                    <h2>Comments</h2><br />
+                    <h2>Comments</h2>
                     " . $comments . "
                     <form action='?' method='post' enctype='multipart/form-data' id='commentsID'>
                         <fieldset>
-				<legend>Comment</legend>
+				<legend>Add comment</legend>
                                 <p id='" . self::$message . "'>" . $message . "</p>
                                 <textarea rows='4' cols='50' name='" . self::$commentText ."'></textarea>
                                 <br/>
                                 <br/>
-                                <input id='" .self::$commentButton. "' type='submit' name='" .self::$commentButton . "'  value='comment' />
+                                <input id='" .self::$commentButton. "' type='submit' name='" .self::$commentButton . "'  value='Comment' />
                         </fieldset>                     
                     </form>";
         } 
