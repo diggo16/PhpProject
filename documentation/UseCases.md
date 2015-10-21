@@ -57,3 +57,26 @@ The user is on the "Show item" site
 1. Starts when the user clicks on the remove button
 2. The system remove the current showing item from the item list
 4. The system return the user to the item list
+
+#Use case 6: Comment an item
+##Precondition
+The user is on the "Show item" site
+
+##Main scenario
+1. Starts when the user clicks on the comment button
+2. The system save the text in the comment field as a comment
+4. The system update the page
+
+## Alternative scenarios
+-2a.
+    1. The user has not filled in any text
+    2. The system show no text is filled in error message
+
+#Use case 7: Sort items
+##Precondition
+The user is on the "item list" site
+
+##Main scenario
+1. Starts when the user click on sorting the items
+2. The system sort the items
+4. The system update the page
