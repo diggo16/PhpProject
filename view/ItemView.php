@@ -40,12 +40,12 @@ class ItemView
             $comments = $this->getCommentsString($item->getComments());
             return '<h2>' . $item->getTitle() . '</h2>
                     ' . $item->getText() . '<br />
-                    By: ' . $item->getAuthor() . "<br />
+                    By: ' . $item->getAuthor() . "<br /><br />
                     <button type='button' onclick=\"location.href ='?" . self::$removeName . "=" . $item->getUniqueID() . "';\">Remove</button><br />
                     <h2>Comments</h2>
                     " . $comments . "
                     <br/>
-                    <form method='post' enctype='multipart/form-data' id='commentsID'>
+                    <form method='post' enctype='multipart/form-data' id='commentsID' style='width:90%'>
                         <fieldset>
 				<legend>Add comment</legend>
                                 <p id='" . self::$message . "'>" . $message . "</p>

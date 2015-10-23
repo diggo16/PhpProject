@@ -63,13 +63,17 @@ class LayoutView
             <title>Forum</title>
           </head>
           <body>
+            <center>
+            <div class="banner" style="background-color:lightblue;">
             <h1>Project</h1>
+            </div>
+            <div class="container">
             ' . $this->getBackButton()
             . $this->getErrorMessageOutput()
-            .'<div class="container">
-            ' . $output
+             . $output
               . $this->getCreateButton()
             .'</div>
+            </center>
            </body>
         </html>
       ';

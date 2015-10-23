@@ -19,7 +19,7 @@ class ItemDAL
     {
         $webPath = "/home/a4521600";
         $this->itemPath = $root . "/data/items.xml";
-        //$this->itemPath = $webPath . "/data/items.xml";
+        $this->itemPath = $webPath . "/data/items.xml";
     }
     /**
      * Load the items
@@ -40,7 +40,10 @@ class ItemDAL
             foreach($xmlItems as $xmlItem)
             {
                 $comments = (array) $xmlItem->comments->comment;
-                $itemsArr[] = new Item($xmlItem->title, $xmlItem->author, $xmlItem->text, $xmlItem->uniqueID, $comments);
+                $date = $xmlItem->date;
+                $item = new Item($xmlItem->title, $xmlItem->author, $xmlItem->text, $xmlItem->uniqueID, $comments, $date);
+                $item->setDate($date);
+                $itemsArr[] = $item;
             }
             // Set the items to the
             $items->setItems($itemsArr);
@@ -63,12 +66,16 @@ class ItemDAL
             // Convert it to an xml object
             $xmlItems = new SimpleXMLElement($xmlString);
             
+            //date
+            $date = "23-10-15";
+            echo  $date;
             // create the new item in the xml object
             $xmlItem = $xmlItems->addChild("item");
             $xmlItem->addChild("title", $item->getTitle());
             $xmlItem->addChild("author", $item->getAuthor());
             $xmlItem->addChild("text", $item->getText());
             $xmlItem->addChild("uniqueID", $item->getUniqueID());
+            $xmlItem->addChild("date", $date);
             $comments = $xmlItem->addChild("comments");
             foreach ($item->getComments() as $comment) 
             {

@@ -67,7 +67,7 @@ class CreateItemView
      */
     public function isAddButtonClicked()
     {
-        if(isset($_POST[self::$add]))
+        if(isset($_POST[self::$add]))   //TODO: add to post
         {
             return true;
         }

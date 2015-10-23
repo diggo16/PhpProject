@@ -11,6 +11,10 @@ class ItemListView
      * @var string $itemName 
      */
     private static $itemName = "itemID";
+    private static $sortLastAdded = "sort::lastAdded";
+    private static $sortName = "sort::name";
+    private static $formSort = "formSort";
+    private static $sortButton = "sortButton";
     public function __construct() 
     {
         
@@ -21,7 +25,20 @@ class ItemListView
      */
     public function getTableOutput($items)
     {
-        $table = '<table style="width:100%">';
+        $table = '<p><b>Added</b>   <b>Title</b></p>
+            <table style="width:10%; ">
+                 <tr>
+                 <td>
+                 <select name="' . self::$formSort . '">
+                   <option value=""></option>
+                   <option value="' . self::$sortLastAdded . '">Last added</option>
+                   <option value="' . self::$sortName . '">Name</option>
+                 </select>
+                 </td>
+                 <td style="text-align:left;">
+                 <button id="' . self::$sortButton . '" type="button" onclick="location.href =\'?' . self::$sortButton . '=1\';">Sort</button>
+                 </td>
+                 </tr>';
         // add a row to the table
         if($items->getItems() != 0)
         {
@@ -30,7 +47,10 @@ class ItemListView
                 $uniqueID = $item->getUniqueID();
                 $title = $item->getTitle();
                 $table .= '<tr>
-                            <td> <a href="?' . self::$itemName . '=' . $uniqueID . '">' . $title . '</a></td>
+                            <td>' . $item->getDate()
+                           .'<td> <a href="?' . self::$itemName . '=' . $uniqueID . '">' . $title . '</a></td>
+                           </tr>
+                           <tr>
                            </tr>';
             }
             $table .= '</table>';
@@ -73,4 +93,14 @@ class ItemListView
     {
         header("location:?");
     }
+    public function getSortButtonName()
+    {
+        return self::$sortButton;
+    }
+    public function getSortValueName()
+    {
+        return self::$formSort;
+    }
+    
+            
 }

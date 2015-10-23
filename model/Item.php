@@ -31,6 +31,7 @@ class Item
      * @var string $uniqueID
      */
     private $uniqueID;
+    private $date;
     private $comments;
     /**
      * Set objects
@@ -39,7 +40,7 @@ class Item
      * @param type $text
      * @param type $uniqueID
      */
-    public function __construct($title = null, $author = null, $text = null, $uniqueID = null, $comments = array()) 
+    public function __construct($title = null, $author = null, $text = null, $uniqueID = null, $comments = array(), $date = null) 
     {
         $this->title = $title;
         $this->text = $text;
@@ -47,6 +48,7 @@ class Item
         $this->isClicked = false;
         $this->uniqueID = $uniqueID;
         $this->comments = $comments;
+        $this->date = $date;
     }
     /**
      * Return the title
@@ -140,5 +142,13 @@ class Item
     public function addComment($text)
     {
         $this->comments[] = $text;
+    }
+    public function getDate()
+    {
+        return $this->date;
+    }
+    public function setDate($date)
+    {
+        $this->date = $date;
     }
 }
