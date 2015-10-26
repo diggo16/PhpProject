@@ -11,10 +11,7 @@ class ItemListView
      * @var string $itemName 
      */
     private static $itemName = "itemID";
-    private static $sortLastAdded = "sort::lastAdded";
-    private static $sortName = "sort::name";
-    private static $formSort = "formSort";
-    private static $sortButton = "sortButton";
+    
     public function __construct() 
     {
         
@@ -26,19 +23,7 @@ class ItemListView
     public function getTableOutput($items)
     {
         $table = '<p><b>Added</b>   <b>Title</b></p>
-            <table style="width:10%; ">
-                 <tr>
-                 <td>
-                 <select name="' . self::$formSort . '">
-                   <option value=""></option>
-                   <option value="' . self::$sortLastAdded . '">Last added</option>
-                   <option value="' . self::$sortName . '">Name</option>
-                 </select>
-                 </td>
-                 <td style="text-align:left;">
-                 <button id="' . self::$sortButton . '" type="button" onclick="location.href =\'?' . self::$sortButton . '=1\';">Sort</button>
-                 </td>
-                 </tr>';
+            <table style="width:10%; ">';
         // add a row to the table
         if($items->getItems() != 0)
         {
@@ -92,15 +77,5 @@ class ItemListView
     public function returnToIndex()
     {
         header("location:?");
-    }
-    public function getSortButtonName()
-    {
-        return self::$sortButton;
-    }
-    public function getSortValueName()
-    {
-        return self::$formSort;
-    }
-    
-            
+    }       
 }

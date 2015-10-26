@@ -71,11 +71,7 @@ class ItemsController
             $this->isItemClicked();
             $this->userWantsToRemoveItem($itemView);
             $this->isCommentAdded($itemView->getCommentButtonName(), $itemView->getCommentText());
-            $post = new PostObjects();
-            if($this->get->isGetSet($this->itemListView->getSortButtonName()))
-            {
-                echo $this->itemListView->getSortValueName() . $post->getString($this->itemListView->getSortValueName());
-            }
+
         } 
         catch (Exception $ex) 
         {
