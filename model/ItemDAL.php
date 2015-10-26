@@ -19,7 +19,7 @@ class ItemDAL
     {
         $webPath = "/home/a4521600";
         $this->itemPath = $root . "/data/items.xml";
-        $this->itemPath = $webPath . "/data/items.xml";
+        //$this->itemPath = $webPath . "/data/items.xml";
     }
     /**
      * Load the items
@@ -67,7 +67,10 @@ class ItemDAL
             $xmlItems = new SimpleXMLElement($xmlString);
             
             //date
-            $date = "23-10-15";
+            $year = date("Y");
+            $month = date("m");
+            $day = date("d");
+            $date = $day . "-" . $month . "-" . $year;
             echo  $date;
             // create the new item in the xml object
             $xmlItem = $xmlItems->addChild("item");
@@ -113,6 +116,7 @@ class ItemDAL
             $xmlItem->addChild("author", $item->getAuthor());
             $xmlItem->addChild("text", $item->getText());
             $xmlItem->addChild("uniqueID", $item->getUniqueID());
+            $xmlItem->addChild("date", $item->getDate());
             $comments = $xmlItem->addChild("comments");
             foreach ($item->getComments() as $comment) 
             {
