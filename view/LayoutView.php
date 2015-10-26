@@ -64,7 +64,7 @@ class LayoutView
           </head>
           <body>
             <center>
-            <div class="banner" style="background-color:lightblue;">
+            <div class="banner" style="background-color:lightgray;">
             <h1>Project</h1>
             </div>
             <div class="container">

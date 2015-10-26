@@ -63,6 +63,7 @@ class CreateItemController
              */
             else
             {
+                $newItem = new Item();
                 $session->setSession($session->getCreateItemMessage(), $errorMessages->getMessageByNumber($errorNumber));
             }
         }

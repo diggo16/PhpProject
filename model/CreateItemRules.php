@@ -15,7 +15,7 @@ class CreateItemRules
      * Maximum length on the title
      * @var int $titleMaxLength 
      */
-    private static $titleMaxLength = 26;
+    private static $titleMaxLength = 60;
     /**
      * Minimum length on the author
      * @var int $authorMinLength 
@@ -35,7 +35,7 @@ class CreateItemRules
      * Maximum length on the text
      * @var int $textMaxLength 
      */
-    private static $textMaxLength = 360;
+    private static $textMaxLength = 10000;
     /**
      * Return a number that represent an error, if everything is correct return 0
      * @param Item $item

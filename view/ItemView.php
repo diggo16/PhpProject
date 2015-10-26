@@ -38,14 +38,16 @@ class ItemView
         if($item != null)
         {
             $comments = $this->getCommentsString($item->getComments());
-            return '<h2>' . $item->getTitle() . '</h2>
-                    ' . $item->getText() . '<br />
-                    By: ' . $item->getAuthor() . "<br /><br />
+            return '<div style="border-style: double; width: 80%">
+                    <h3>' . $item->getTitle() . '</h3>
+                    <p style="text-align:left">' . $item->getText() . '</p>
+                    <h4>By: ' . $item->getAuthor() . "</h4>
                     <button type='button' onclick=\"location.href ='?" . self::$removeName . "=" . $item->getUniqueID() . "';\">Remove</button><br />
+                    </div>
                     <h2>Comments</h2>
                     " . $comments . "
                     <br/>
-                    <form method='post' enctype='multipart/form-data' id='commentsID' style='width:90%'>
+                    <form method='post' enctype='multipart/form-data' id='commentsID' style='width:80%'>
                         <fieldset>
 				<legend>Add comment</legend>
                                 <p id='" . self::$message . "'>" . $message . "</p>
@@ -78,8 +80,8 @@ class ItemView
         $string = "";
         foreach ($comments as $comment) 
         {
-            $string .= '<div style="border-style: double; background-color:lightblue;">
-                        <p>' . $comment . '</p><br />
+            $string .= '<div style="border-style: double; background-color:lightblue; text-align:left;">
+                        <p>' . $comment . '</p>
                         </div><br />';
         } 
         return $string;

@@ -100,7 +100,7 @@ class ErrorMessages
      */
     private function getTitleTooLong()
     {
-        return $this->tooLong(self::$title, "26");
+        return $this->tooLong(self::$title, "60");
     }
     /**
      * Return message author too short
@@ -132,7 +132,7 @@ class ErrorMessages
      */
     private function getTextTooLong()
     {
-        return $this->tooLong(self::$text, "360");
+        return $this->tooLong(self::$text, "10000");
     }
     /**
      * Return a string that $name must be minimum $value characters
