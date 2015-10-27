@@ -166,12 +166,3 @@ Successfully created a new item
 ###Output:
 - Test case 1.2
 
-##Test case 1.17 Sort items
-
-###Input:
-- Test case 1.1
-- Sort button is pushed
-
-###Output:
-- Test case 1.1
-

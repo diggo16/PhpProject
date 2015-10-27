@@ -71,12 +71,3 @@ The user is on the "Show item" site
 -2a.
     1. The user has not filled in any text
     2. The system show no text is filled in error message
-
-#Use case 7: Sort items
-##Precondition
-The user is on the "item list" site
-
-##Main scenario
-1. Starts when the user click on sorting the items
-2. The system sort the items
-4. The system update the page
