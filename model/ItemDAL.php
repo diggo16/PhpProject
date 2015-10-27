@@ -41,8 +41,8 @@ class ItemDAL
             {
                 $comments = (array) $xmlItem->comments->comment;
                 $date = $xmlItem->date;
+                // Create new item and put it in the items array
                 $item = new Item($xmlItem->title, $xmlItem->author, $xmlItem->text, $xmlItem->uniqueID, $comments, $date);
-                $item->setDate($date);
                 $itemsArr[] = $item;
             }
             // Set the items to the
