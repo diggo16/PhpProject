@@ -19,7 +19,7 @@ class ItemDAL
     {
         $webPath = "/home/a4521600";
         $this->itemPath = $root . "/data/items.xml";
-        //$this->itemPath = $webPath . "/data/items.xml";
+        $this->itemPath = $webPath . "/data/items.xml";
     }
     /**
      * Load the items
